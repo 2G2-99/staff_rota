@@ -1,10 +1,15 @@
 import { RootRoute, Route, Router } from '@tanstack/react-router';
 import Root from './Root';
+import Home from '../Pages/Home';
 
 const rootRoute = new RootRoute({
 	component: Root,
 });
-const indexRoute = new Route({ getParentRoute: () => rootRoute, path: '/' });
+const indexRoute = new Route({
+	getParentRoute: () => rootRoute,
+	path: '/',
+	component: Home,
+});
 const weekRoute = new Route({ getParentRoute: () => rootRoute, path: 'week' });
 const teamRoute = new Route({ getParentRoute: () => rootRoute, path: 'team' });
 const teamIndexRoute = new Route({
