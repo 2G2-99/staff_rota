@@ -2,10 +2,10 @@ import '../../styles/Header.css';
 
 function Header({ siteTitle, children }) {
 	return (
-		<div>
+		<header>
 			<span id="site-title">{siteTitle}</span>
 			<div>{children}</div>
-		</div>
+		</header>
 	);
 }
 
