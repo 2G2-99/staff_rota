@@ -1,4 +1,7 @@
 #site-title {
-	font-size: var(--3xl-font);
+	font-size: var(--lg-text);
 	color: var(--red-tape);
+	font-weight: bolder;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
 }
