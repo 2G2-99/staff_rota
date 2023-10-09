@@ -1,7 +1,9 @@
+import '../../styles/Header.css';
+
 function Header({ siteTitle, children }) {
 	return (
 		<div>
-			{siteTitle}
+			<span id="site-title">{siteTitle}</span>
 			<div>{children}</div>
 		</div>
 	);

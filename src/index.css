@@ -1,0 +1,16 @@
+:root, html {
+	font-size: var(--base);
+	font-family: Arial, Helvetica, sans-serif;
+	--xs-font: .375rem;
+	--sm-font: .5rem;
+	--base-font: 16px;
+	--md-font: 1.25rem;
+	--lg-font: 1.5rem
+	--xl-font: 2rem;
+	--2xl-font: 2.5rem;
+	--3xl-font: 3rem;
+
+	--red-tape: #d21033;
+	--white: #ffffff;
+	--light-grey: #eeeeee;
+}
