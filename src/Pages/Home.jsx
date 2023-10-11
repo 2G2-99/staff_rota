@@ -23,12 +23,12 @@ function Home() {
 				{me.position}
 			</div>
 			<div>
-				{anyCrew.lastName}, {anyCrew.firstName} - {anyCrew.sayAge()} Years old -
-				Position: {anyCrew.position}
+				{anna.lastName}, {anna.firstName} - {anna.sayAge()} Years old -
+				Position: {anna.position}
 			</div>
 			<div>
-				{anyCrew2.lastName}, {anyCrew2.firstName} - {anyCrew2.sayAge()} Years
-				old - Position: {anyCrew2.position}
+				{arancha.lastName}, {arancha.firstName} - {arancha.sayAge()} Years old -
+				Position: {arancha.position}
 			</div>
 			{/*  */}
 		</div>
@@ -36,8 +36,10 @@ function Home() {
 }
 
 const me = new Manager(9, 1, 1999, 'Santiago', 'Gomez', 'sm');
-const anyCrew = new TeamMember(26, 6, 2003, 'John', 'Doe');
-anyCrew.setPosition('crew');
-const anyCrew2 = new TeamMember(26, 6, 2003, 'John', 'Doe', 'gm');
+const anna = new TeamMember(26, 6, 2000, 'Anna', 'Dabbi');
+anna.setPosition('crew');
+const arancha = new TeamMember(17, 7, 1978, 'Aranzazu', 'Rodriguez', 'gm');
+
+console.log(me, anna, arancha);
 
 export default Home;

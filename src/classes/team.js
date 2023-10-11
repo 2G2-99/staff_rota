@@ -2,13 +2,19 @@ import { differenceInYears } from 'date-fns/esm';
 
 class TeamMember {
 	constructor(day, month, year, firstName, lastName, position) {
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.firstName =
+			firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
+		this.lastName =
+			lastName.charAt(0).toUpperCase() + lastName.slice(1).toLowerCase();
 		this.birthdate = new Date(year, month - 1, day);
 		this.position = position;
 		this.checkPosition();
 	}
 
+	lowercaseName() {
+		this.firstName = this.firstName.toLowerCase();
+		this.lastName = this.lastName.toLowerCase();
+	}
 	calculateAge() {
 		const today = new Date();
 		this.age = differenceInYears(today, this.birthdate);
