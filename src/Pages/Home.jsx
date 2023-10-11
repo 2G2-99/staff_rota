@@ -37,7 +37,7 @@ function Home() {
 
 const me = new Manager(9, 1, 1999, 'Santiago', 'Gomez', 'sm');
 const anyCrew = new TeamMember(26, 6, 2003, 'John', 'Doe');
-// TODO: Make a way to enforce a way that if a TeamMember instance has a value equal to SM, AM or GM it instantly becomes an instance of Manager
+anyCrew.setPosition('crew');
 const anyCrew2 = new TeamMember(26, 6, 2003, 'John', 'Doe', 'gm');
 
 export default Home;

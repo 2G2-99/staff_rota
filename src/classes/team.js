@@ -9,7 +9,6 @@ class TeamMember {
 		this.checkPosition();
 	}
 
-	capitaliseValues() {}
 	calculateAge() {
 		const today = new Date();
 		this.age = differenceInYears(today, this.birthdate);
@@ -44,6 +43,8 @@ class TeamMember {
 		if (!this.position) {
 			console.log('A position must be defined to add a new member to the team');
 			this.position = 'undefined';
+		} else if (this.position !== 'crew' && this.position !== 'qc') {
+			this.constructor = Manager;
 		}
 	}
 	setPosition(position) {
