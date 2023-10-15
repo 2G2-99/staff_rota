@@ -7,8 +7,24 @@ class TeamMember {
 		this.birthdate = new Date(year, month - 1, day);
 		this.position = position;
 		this.checkPosition();
+		this.lowercaseValues();
 	}
 
+	lowercaseValues() {
+		this.firstName = this.firstName.toLowerCase();
+		this.lastName = this.lastName.toLowerCase();
+		this.position = this.position.toLowerCase();
+	}
+	capitalisedName() {
+		this.firstName =
+			this.firstName.charAt(0).toUpperCase() +
+			this.firstName.slice(1).toLowerCase();
+		this.lastName =
+			this.lastName.charAt(0).toUpperCase() +
+			this.lastName.slice(1).toLowerCase();
+
+		return this.lastName.concat(', ', this.firstName);
+	}
 	calculateAge() {
 		const today = new Date();
 		this.age = differenceInYears(today, this.birthdate);
