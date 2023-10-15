@@ -47,6 +47,7 @@ console.log(me, anna, arancha);
 
 // * Testing Week classes and methods
 const newShift = new Shift(7, 4);
+const newShift2 = new Shift(4);
 // * Testing Week classes and methods
 
 export default Home;
