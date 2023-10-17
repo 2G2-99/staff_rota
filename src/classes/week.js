@@ -1,20 +1,99 @@
+import {
+	differenceInHours,
+	format,
+	formatDistanceToNow,
+	parse,
+} from 'date-fns';
+
 class Shift {
-	constructor(start, end, off, other, blank) {
+	constructor(start, end, other) {
 		this.start = start;
 		this.end = end;
-		this.off = off;
 		this.other = other;
-		this.blank = blank;
+		this.parsedTimes();
 		this.checkShift();
 	}
+
+	parsedTimes() {
+		const parsedStart = parse(this.start, 'HH:mm', new Date());
+		const parsedEnd = parse(this.end, 'HH:mm', new Date());
+		// const formattedStart = format(parsedStart, 'HH:mm');
+		// const formattedEnd = format(parsedEnd, 'HH:mm');
+
+		this.parsedStart = parsedStart;
+		this.parsedEnd = parsedEnd;
+		// this.formattedStart = formattedStart;
+		// this.formattedEnd = formattedEnd;
+	}
+
 	checkShift() {
 		if (this.start && this.end) {
-			// TODO: Create the logic to determine the time of input (16 instead of 4 when is a closing)
-			console.log(`${this.start} - ${this.end}`);
+			if (this.end < this.start) {
+				return `You cannot set a shift to _____ where the starting time is ahead of the ending time`;
+			}
+			return `${this.start} - ${this.end}`;
 		} else if (!this.start || !this.end) {
-			console.log('A shift must include an starting and ending time');
+			return 'A shift must include an starting and ending time';
 		}
+	}
+
+	calculateHours() {
+		const start = parse(this.start, 'HH:mm', new Date());
+		const end = parse(this.end, 'HH:mm', new Date());
+		const hours = differenceInHours(end, start);
+		return hours;
+	}
+
+	typeOfShift() {
+		return this.start >= '7:00'
+			? 'morning'
+			: this.start >= '11:00' && (this.end <= '23:00' || this.end <= '23:30')
+			? 'split'
+			: this.end > '23:00' || this.end > '23:30'
+			? 'closing'
+			: undefined;
 	}
 }
 
-export { Shift };
+class Day {
+	constructor(date, shifts = []) {
+		this.date = date;
+		this.shifts = shifts;
+	}
+
+	addShift(shift) {
+		this.shifts.push(shift);
+	}
+
+	removeShift(shift) {
+		const index = this.shifts.indexOf(shift);
+		if (index !== -1) {
+			this.shifts.splice(index, 1);
+		}
+	}
+
+	peopleOnShift() {
+		let morning = 0;
+		let closing = 0;
+
+		this.shifts.forEach(shift => {
+			if (shift.start >= 7 && shift.start < 16) {
+				morning++;
+			} else {
+				closing++;
+			}
+		});
+
+		return { morning, closing };
+	}
+
+	getFormattedDate() {
+		return format(this.date, 'yyyy-MM-dd');
+	}
+
+	getRelativeDate() {
+		return formatDistanceToNow(this.date, { addSuffix: true });
+	}
+}
+
+export { Shift, Day };
