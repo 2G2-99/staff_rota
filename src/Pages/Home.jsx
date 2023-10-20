@@ -1,4 +1,4 @@
-import { Manager, TeamMember } from '../classes/team';
+// import { Manager, TeamMember } from '../classes/team';
 import { Day, Shift } from '../classes/week';
 import {
 	currentShift,
@@ -44,15 +44,15 @@ function Home() {
 // * Testing team member classes and methods
 
 // * Testing Week classes and methods
-const newShift = new Shift('07:00', '16:00');
-const newShift2 = new Shift('07:00', '4:00');
-newShift2.end = '14:00';
-const newShift3 = new Shift(undefined, '18:00');
-newShift3.start = '11:00';
-const newShift4 = new Shift('16:00', '00:00');
-const newShift5 = new Shift('18:00', '00:30');
+// const newShift = new Shift('07:00', '16:00');
+// const newShift2 = new Shift('07:00', '4:00');
+// newShift2.end = '14:00';
+// const newShift3 = new Shift(undefined, '18:00');
+// newShift3.start = '11:00';
+// const newShift4 = new Shift('16:00', '00:00');
+// const newShift5 = new Shift('18:00', '00:30');
 
-console.log(newShift);
+// console.log(newShift);
 
 // console.log(newShift.calculateHours());
 // console.log(newShift2.calculateHours());
@@ -64,11 +64,8 @@ console.log(newShift);
 // console.log(newShift4.typeOfShift());
 
 const day = new Day(new Date());
-day.addShift(newShift);
-day.addShift(newShift2);
-day.addShift(newShift3);
-day.addShift(newShift4);
-day.addShift(newShift5);
+day.addShift('07:00', '14:00');
+console.log(day);
 // * Testing Week classes and methods
 
 export default Home;

@@ -6,7 +6,8 @@ import {
 } from 'date-fns';
 
 class Shift {
-	constructor(start, end, other) {
+	constructor(date, start, end, other) {
+		this.date = date;
 		this.start = start;
 		this.end = end;
 		this.other = other;
@@ -15,15 +16,15 @@ class Shift {
 	}
 
 	parsedTimes() {
-		const parsedStart = parse(this.start, 'HH:mm', new Date());
-		const parsedEnd = parse(this.end, 'HH:mm', new Date());
-		// const formattedStart = format(parsedStart, 'HH:mm');
-		// const formattedEnd = format(parsedEnd, 'HH:mm');
+		const parsedStart = new Date(`${this.date.toDateString()} ${this.start}`);
+		const parsedEnd = new Date(`${this.date.toDateString()} ${this.end}`);
+		const formattedStart = format(parsedStart, 'HH:mm');
+		const formattedEnd = format(parsedEnd, 'HH:mm');
 
 		this.parsedStart = parsedStart;
 		this.parsedEnd = parsedEnd;
-		// this.formattedStart = formattedStart;
-		// this.formattedEnd = formattedEnd;
+		this.formattedStart = formattedStart;
+		this.formattedEnd = formattedEnd;
 	}
 
 	checkShift() {
@@ -61,8 +62,8 @@ class Day {
 		this.shifts = shifts;
 	}
 
-	addShift(shift) {
-		this.shifts.push(shift);
+	addShift(start, end, other) {
+		this.shifts.push(new Shift(this.date, start, end, other));
 	}
 
 	removeShift(shift) {
