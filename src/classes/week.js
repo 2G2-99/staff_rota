@@ -1,9 +1,4 @@
-import {
-	differenceInHours,
-	format,
-	formatDistanceToNow,
-	parse,
-} from 'date-fns';
+import { format, formatDistanceToNow, parse } from 'date-fns';
 
 class Shift {
 	constructor(date, start, end, other = undefined) {
@@ -12,45 +7,45 @@ class Shift {
 		this.end = end;
 		this.other = other;
 		this.checkShift();
-		this.typeOfShift();
+		this.type = this.typeOfShift();
+		this.hours = this.calculateHours();
 	}
 
 	checkShift() {
-		if (this.start && this.end) {
-			if (
-				this.end < this.start &&
-				this.end !== '00:00' &&
-				this.end !== '00:30'
-			) {
-				return `You cannot set a shift where the starting time is ahead of the ending time`;
-			}
-			return `${this.start} - ${this.end}`;
-		} else if (!this.start || !this.end) {
-			return 'A shift must include a starting and ending time';
+		if (!this.start || !this.end) {
+			throw new Error('A shift must include a starting and ending time');
+		}
+		if (this.end < this.start && this.end !== '00:00' && this.end !== '00:30') {
+			throw new Error(
+				'You cannot set a shift where the starting time is ahead of the ending time'
+			);
 		}
 	}
 
 	typeOfShift() {
 		if (this.start >= '15:00') {
-			this.type = 'closing';
-			return;
+			return 'closing';
+		} else if (this.start >= '07:00' && this.end > '16:00') {
+			return 'split';
 		} else if (this.start >= '07:00') {
-			if (this.end >= '16:00') {
-				this.type = 'split';
-				return;
-			}
-			this.type = 'opening';
-			return;
+			return 'opening';
 		}
 	}
 
 	calculateHours() {
-		const dateStr = format(this.date, 'yyyy-MM-dd');
-		const start = new Date(`${dateStr}T${this.start}`);
-		const end = new Date(`${dateStr}T${this.end}`);
-		const hours = differenceInHours(end, start);
+		const start = new Date(this.date);
+		const end = new Date(this.date);
+		const [startHours, startMinutes] = this.start.split(':').map(Number);
+		const [endHours, endMinutes] = this.end.split(':').map(Number);
 
-		return hours;
+		start.setHours(startHours, startMinutes);
+		end.setHours(endHours, endMinutes);
+
+		if (end < start) {
+			end.setDate(end.getDate() + 1);
+		}
+
+		return (end - start) / 1000 / 60 / 60;
 	}
 }
 
@@ -60,14 +55,19 @@ class Day {
 		this.shifts = shifts;
 	}
 
-	// TODO: ADD LOGIC TO HAVE A SINGLE SHIFT WHEN THE END TIME CROSSES MIDNIGHT
 	addShift(start, end, other) {
 		this.shifts.push(new Shift(this.date, start, end, other));
 	}
 
 	removeShift(shift) {
+		if (!(shift instanceof Shift)) {
+			throw new Error('Invalid shift object');
+		}
+
 		const index = this.shifts.indexOf(shift);
-		if (index !== -1) {
+		if (index === -1) {
+			throw new Error('Shift not found');
+		} else {
 			this.shifts.splice(index, 1);
 		}
 	}
@@ -76,15 +76,16 @@ class Day {
 		let morning = 0;
 		let closing = 0;
 
-		this.shifts.forEach(shift => {
+		for (const shift of this.shifts) {
 			if (shift.type === 'split') {
-				return morning++, closing++;
+				morning++;
+				closing++;
 			} else if (shift.type === 'opening') {
-				return morning++;
+				morning++;
 			} else if (shift.type === 'closing') {
-				return closing++;
+				closing++;
 			}
-		});
+		}
 
 		return { morning, closing };
 	}

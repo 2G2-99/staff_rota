@@ -57,22 +57,21 @@ function Home() {
 // console.log(newShift4.typeOfShift());
 
 const nextMonday = new Day('23/10/23');
-nextMonday.addShift('07:00', '14:00');
+nextMonday.addShift('07:00', '16:00');
 nextMonday.addShift('09:00', '18:00');
 nextMonday.addShift('11:00', '21:00');
 nextMonday.addShift('16:00', '00:00');
 nextMonday.addShift('18:00', '00:00');
-nextMonday.addShift('07:00', '14:00');
+nextMonday.addShift('07:00', '16:00');
 
-// nextMonday.shifts.forEach(shift => {
-// 	console.log(shift.checkShift());
-// 	console.log(shift.calculateHours());
-// 	console.log(shift.type);
-// 	console.log('============================');
-// });
-// console.log(nextMonday.shifts);
-// console.log(nextMonday.shifts[2].calculateHours());
-// console.log(nextMonday.shifts[2].checkShift());
+console.log(nextMonday.shifts);
+nextMonday.shifts.forEach(shift => {
+	// console.log(shift.checkShift());
+	console.log(shift);
+	console.log(shift.type);
+	console.log(shift.hours);
+	console.log('============================');
+});
 console.log(nextMonday.peopleOnShift());
 // * Testing Week classes and methods
 
