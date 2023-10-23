@@ -1,5 +1,5 @@
 // import { Manager, TeamMember } from '../classes/team';
-import { Day, Shift } from '../classes/week';
+import { Day } from '../classes/week';
 import {
 	currentShift,
 	formattedDate,
@@ -44,14 +44,7 @@ function Home() {
 // * Testing team member classes and methods
 
 // * Testing Week classes and methods
-// const newShift = new Shift('07:00', '16:00');
-// const newShift2 = new Shift('07:00', '4:00');
-// newShift2.end = '14:00';
-// const newShift3 = new Shift(undefined, '18:00');
-// newShift3.start = '11:00';
-// const newShift4 = new Shift('16:00', '00:00');
-// const newShift5 = new Shift('18:00', '00:30');
-
+// TODO: FIND A WAY TO MAKE THE CLOSING SHIFTS WORK, INSTEAD OF HAVING THE MAS STARTING AT '00:30'
 // console.log(newShift);
 
 // console.log(newShift.calculateHours());
@@ -63,9 +56,24 @@ function Home() {
 // console.log(newShift3.typeOfShift());
 // console.log(newShift4.typeOfShift());
 
-const day = new Day(new Date());
-day.addShift('07:00', '14:00');
-console.log(day);
+const nextMonday = new Day('23/10/23');
+nextMonday.addShift('07:00', '14:00');
+nextMonday.addShift('09:00', '18:00');
+nextMonday.addShift('11:00', '21:00');
+nextMonday.addShift('16:00', '00:00');
+nextMonday.addShift('18:00', '00:00');
+nextMonday.addShift('07:00', '14:00');
+
+// nextMonday.shifts.forEach(shift => {
+// 	console.log(shift.checkShift());
+// 	console.log(shift.calculateHours());
+// 	console.log(shift.type);
+// 	console.log('============================');
+// });
+// console.log(nextMonday.shifts);
+// console.log(nextMonday.shifts[2].calculateHours());
+// console.log(nextMonday.shifts[2].checkShift());
+console.log(nextMonday.peopleOnShift());
 // * Testing Week classes and methods
 
 export default Home;
