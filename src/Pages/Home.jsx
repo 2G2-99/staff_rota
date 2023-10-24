@@ -37,42 +37,38 @@ function Home() {
 }
 
 //* Testing team member classes and methods
-// const me = new Manager(9, 1, 1999, 'Santiago', 'Gomez', 'sm');
-// const anna = new TeamMember(26, 6, 2000, 'Anna', 'Dabbi');
-// anna.setPosition('crew');
-// const arancha = new TeamMember(17, 7, 1978, 'Aranzazu', 'Rodriguez', 'gm');
+
 // * Testing team member classes and methods
-
 // * Testing Week classes and methods
-// TODO: FIND A WAY TO MAKE THE CLOSING SHIFTS WORK, INSTEAD OF HAVING THE MAS STARTING AT '00:30'
-// console.log(newShift);
+const Wednesday = new Day('25/10/23');
+Wednesday.addShift('07:00', '16:00');
+Wednesday.addShift('07:00', '16:00');
+Wednesday.addShift('07:00', '16:00');
+Wednesday.addShift('16:00', '00:00');
+Wednesday.addShift('16:00', '00:00');
+Wednesday.addShift('16:00', '00:00');
 
-// console.log(newShift.calculateHours());
-// console.log(newShift2.calculateHours());
-// console.log(newShift3.calculateHours());
+// console.log(Wednesday.getFormattedDate());
+// console.log(Wednesday.peopleOnShift());
 
-// console.log(newShift.typeOfShift());
-// console.log(newShift2.typeOfShift());
-// console.log(newShift3.typeOfShift());
-// console.log(newShift4.typeOfShift());
+console.log('========================');
+const Thursday = new Day('26.10.23');
+Thursday.addShift('14:00', '23:00');
+Thursday.addShift('07:00', '16:00');
+Thursday.addShift('07:00', '16:00');
+Thursday.addShift('07:00', '16:00');
+Thursday.addShift('16:00', '00:00');
+Thursday.addShift('16:00', '00:00');
+Thursday.addShift('16:00', '00:00');
 
-const nextMonday = new Day('23/10/23');
-nextMonday.addShift('07:00', '16:00');
-nextMonday.addShift('09:00', '18:00');
-nextMonday.addShift('11:00', '21:00');
-nextMonday.addShift('16:00', '00:00');
-nextMonday.addShift('18:00', '00:00');
-nextMonday.addShift('07:00', '16:00');
+console.log(Thursday.shifts);
+// console.log(Thursday.shifts[3]);
+Thursday.removeShift(Thursday.shifts[3]);
+Thursday.addShift('07:00', '16:00');
 
-console.log(nextMonday.shifts);
-nextMonday.shifts.forEach(shift => {
-	// console.log(shift.checkShift());
-	console.log(shift);
-	console.log(shift.type);
-	console.log(shift.hours);
-	console.log('============================');
-});
-console.log(nextMonday.peopleOnShift());
+console.log(Thursday.getFormattedDate());
+console.log(Thursday.shifts);
+console.log(Thursday.peopleOnShift());
 // * Testing Week classes and methods
 
 export default Home;

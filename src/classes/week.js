@@ -1,7 +1,7 @@
-import { format, formatDistanceToNow, parse } from 'date-fns';
+import { format, parse } from 'date-fns';
 
 class Shift {
-	constructor(date, start, end, other = undefined) {
+	constructor(date, start, end, other = []) {
 		this.date = date;
 		this.start = start;
 		this.end = end;
@@ -51,8 +51,12 @@ class Shift {
 
 class Day {
 	constructor(dateString, shifts = []) {
-		this.date = parse(dateString, 'dd/MM/yy', new Date());
+		this.date = this.formatDateString(dateString);
 		this.shifts = shifts;
+	}
+	formatDateString(dateString) {
+		const formattedDateString = dateString.replace(/[/./]/g, '/');
+		return parse(formattedDateString, 'dd/MM/yy', new Date());
 	}
 
 	addShift(start, end, other) {
@@ -91,12 +95,13 @@ class Day {
 	}
 
 	getFormattedDate() {
-		return format(this.date, 'yyyy-MM-dd');
+		return format(this.date, 'dd/MM/yyyy');
 	}
 
-	getRelativeDate() {
-		return formatDistanceToNow(this.date, { addSuffix: true });
-	}
+	// ! Need to review the use of this method
+	// getRelativeDate() {
+	// 	return formatDistanceToNow(this.date, { addSuffix: true });
+	// }
 }
 
 export { Shift, Day };
