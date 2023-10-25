@@ -1,22 +1,34 @@
-import { addWeeks, startOfWeek } from 'date-fns';
+import { addDays, addWeeks, format, startOfWeek } from 'date-fns';
+import Day from './day';
+
+const DAYS_IN_WEEK = 7;
 
 class Week {
-	constructor(date = new Date(), weeksToAdvance = 0, days = []) {
+	constructor(date = new Date(), weeksToAdvance = 0) {
 		this.date = date;
-		this.days = days;
 		this.weeksToAdvance = weeksToAdvance;
-		this.startOn = this.getStartOfWeek();
-		this.advanceTo = this.addToWeek();
+		this.startOn = this.getAdvancedWeekStart();
+		this.days = this.addDaysToWeek();
 	}
 
-	getStartOfWeek() {
-		return startOfWeek(this.date, { weekStartsOn: 1 });
+	getAdvancedWeekStart() {
+		if (this.weeksToAdvance > 0) {
+			return startOfWeek(addWeeks(this.date, this.weeksToAdvance), {
+				weekStartsOn: 1,
+			});
+		} else {
+			return startOfWeek(this.date, { weekStartsOn: 1 });
+		}
 	}
 
-	addToWeek() {
-		return this.weeksToAdvance > 0
-			? addWeeks(this.startOn, this.weeksToAdvance)
-			: null;
+	addDaysToWeek() {
+		const days = [];
+		for (let i = 0; i < DAYS_IN_WEEK; i++) {
+			const dayDate = addDays(this.startOn, i);
+			const dateString = format(dayDate, 'dd/MM/yy');
+			days.push(new Day(dateString));
+		}
+		return days;
 	}
 }
 
