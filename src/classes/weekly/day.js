@@ -25,6 +25,7 @@ class Day {
 			throw new Error('Shift not found');
 		} else {
 			this.shifts.splice(index, 1);
+			return `Shift at index ${index} deleted`;
 		}
 	}
 
@@ -54,6 +55,14 @@ class Day {
 	// getRelativeDate() {
 	// 	return formatDistanceToNow(this.date, { addSuffix: true });
 	// }
+
+	calculateHoursOfDay() {
+		const totalHours = this.shifts
+			.map(shift => shift.hours)
+			.reduce((totalHours, hours) => totalHours + hours, 0);
+
+		this.hours = totalHours;
+	}
 }
 
 export default Day;
