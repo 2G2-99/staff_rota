@@ -56,7 +56,6 @@ class Day {
 	// 	return formatDistanceToNow(this.date, { addSuffix: true });
 	// }
 
-	// TODO: FIND A WAY TO CALCULATE THE TOTAL HOURS OF THE SHIFTS ON THAT DAY
 	calculateHoursOfDay() {
 		const totalHours = this.shifts
 			.map(shift => shift.hours)

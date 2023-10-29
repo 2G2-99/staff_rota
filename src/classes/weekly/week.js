@@ -30,6 +30,18 @@ class Week {
 		}
 		return days;
 	}
+
+	calculateHoursOfWeek() {
+		const totalHours = this.days
+			.map(day => {
+				day.calculateHoursOfDay();
+
+				return day.hours;
+			})
+			.reduce((totalHours, hours) => totalHours + hours, 0);
+
+		this.hours = totalHours;
+	}
 }
 
 export default Week;
