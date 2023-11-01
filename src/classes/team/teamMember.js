@@ -1,5 +1,4 @@
 import { differenceInYears } from 'date-fns/esm';
-import Shift from '../weekly/shift';
 
 class TeamMember {
 	constructor(day, month, year, firstName, lastName, position) {
@@ -72,11 +71,6 @@ class TeamMember {
 	setPosition(position) {
 		this.position = position;
 		this.checkPosition();
-	}
-
-	setShift(day, startTime, endTime) {
-		const shift = new Shift(day, startTime, endTime);
-		day.addShift(this, shift);
 	}
 }
 

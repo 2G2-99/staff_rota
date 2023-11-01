@@ -1,41 +1,44 @@
 import { format, parse } from 'date-fns';
+import Shift from './shift';
 
 class Day {
 	constructor(dateString, shifts = new Map()) {
 		this.date = this.formatDateString(dateString);
 		this.shifts = shifts;
 	}
+
 	formatDateString(dateString) {
 		const formattedDateString = dateString.replace(/[/./]/g, '/');
 		return parse(formattedDateString, 'dd/MM/yy', new Date());
 	}
 
-	addShift(teamMember, shift) {
-		const teamMemberName = teamMember.firstName;
+	addShift(teamMember, startTime, endTime) {
+		const shift = new Shift(this.date, startTime, endTime);
 
-		if (this.shifts.has(teamMemberName)) {
+		if (this.shifts.has(teamMember)) {
 			throw new Error(
-				`Team member ${teamMemberName} already has a shift on this day.`
+				`Team member ${teamMember} already has a shift on this day.`
 			);
 		} else {
-			this.shifts.set(teamMemberName, shift);
+			this.shifts.set(teamMember, shift);
 		}
 	}
 
-	// ! Need to review its functionality and use within the class
-	// modifyShift(teamMember, newShift) {
-	// 	const teamMemberName = teamMember.firstName;
+	modifyShift(teamMember, startTime, endTime) {
+		const shift = new Shift(this.date, startTime, endTime);
 
-	// 	if (this.shifts.has(teamMemberName)) {
-	// 		this.shifts.set(teamMemberName, newShift);
-	// 	} else {
-	// 		throw new Error(`${teamMemberName} does not have a shift on this day.`);
-	// 	}
-	// }
+		if (this.shifts.has(teamMember)) {
+			this.shifts.set(teamMember, shift);
+		} else {
+			throw new Error(`${teamMember} does not have a shift on this day.`);
+		}
+	}
 
-	removeShift(teamMemberName) {
-		if (this.shifts.has(teamMemberName)) {
-			this.shifts.delete(teamMemberName);
+	removeShift(teamMember) {
+		if (this.shifts.has(teamMember)) {
+			this.shifts.delete(teamMember);
+		} else {
+			throw new Error('Given team member does not exist');
 		}
 	}
 
@@ -43,7 +46,7 @@ class Day {
 		let morning = 0;
 		let closing = 0;
 
-		for (const shift of this.shifts) {
+		for (const shift of this.shifts.values()) {
 			if (shift.type === 'split') {
 				morning++;
 				closing++;
@@ -54,7 +57,9 @@ class Day {
 			}
 		}
 
-		return { morning, closing };
+		// return { morning, closing };
+		this.morning = morning;
+		this.closing = closing;
 	}
 
 	getFormattedDate() {
@@ -67,11 +72,12 @@ class Day {
 	// }
 
 	calculateHoursOfDay() {
-		const totalHours = this.shifts
-			.map(shift => shift.hours)
-			.reduce((totalHours, hours) => totalHours + hours, 0);
+		const shiftsHours = [];
+		for (const shift of this.shifts.values()) {
+			shiftsHours.push(shift.hours);
+		}
 
-		this.hours = totalHours;
+		return shiftsHours.reduce((totalHours, hours) => totalHours + hours, 0);
 	}
 }
 
