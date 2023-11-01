@@ -1,8 +1,7 @@
 import { format, parse } from 'date-fns';
-import Shift from './shift';
 
 class Day {
-	constructor(dateString, shifts = []) {
+	constructor(dateString, shifts = new Map()) {
 		this.date = this.formatDateString(dateString);
 		this.shifts = shifts;
 	}
@@ -11,21 +10,32 @@ class Day {
 		return parse(formattedDateString, 'dd/MM/yy', new Date());
 	}
 
-	addShift(startOn, end, other) {
-		this.shifts.push(new Shift(this.date, startOn, end, other));
+	addShift(teamMember, shift) {
+		const teamMemberName = teamMember.firstName;
+
+		if (this.shifts.has(teamMemberName)) {
+			throw new Error(
+				`Team member ${teamMemberName} already has a shift on this day.`
+			);
+		} else {
+			this.shifts.set(teamMemberName, shift);
+		}
 	}
 
-	removeShift(shift) {
-		if (!(shift instanceof Shift)) {
-			throw new Error('Invalid shift object');
-		}
+	// ! Need to review its functionality and use within the class
+	// modifyShift(teamMember, newShift) {
+	// 	const teamMemberName = teamMember.firstName;
 
-		const index = this.shifts.indexOf(shift);
-		if (index === -1) {
-			throw new Error('Shift not found');
-		} else {
-			this.shifts.splice(index, 1);
-			return `Shift at index ${index} deleted`;
+	// 	if (this.shifts.has(teamMemberName)) {
+	// 		this.shifts.set(teamMemberName, newShift);
+	// 	} else {
+	// 		throw new Error(`${teamMemberName} does not have a shift on this day.`);
+	// 	}
+	// }
+
+	removeShift(teamMemberName) {
+		if (this.shifts.has(teamMemberName)) {
+			this.shifts.delete(teamMemberName);
 		}
 	}
 

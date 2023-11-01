@@ -1,4 +1,5 @@
 import { differenceInYears } from 'date-fns/esm';
+import Shift from '../weekly/shift';
 
 class TeamMember {
 	constructor(day, month, year, firstName, lastName, position) {
@@ -15,6 +16,7 @@ class TeamMember {
 		this.lastName = this.lastName.toLowerCase();
 		this.position = this.position.toLowerCase();
 	}
+
 	capitalisedName() {
 		this.firstName =
 			this.firstName.charAt(0).toUpperCase() +
@@ -25,14 +27,17 @@ class TeamMember {
 
 		return this.lastName.concat(', ', this.firstName);
 	}
+
 	calculateAge() {
 		const today = new Date();
 		this.age = differenceInYears(today, this.birthdate);
 	}
+
 	sayAge() {
 		this.calculateAge();
 		return this.age;
 	}
+
 	sayPosition() {
 		switch (this.position) {
 			case 'crew':
@@ -55,17 +60,23 @@ class TeamMember {
 				break;
 		}
 	}
+
 	checkPosition() {
 		if (!this.position) {
-			console.log('A position must be defined to add a new member to the team');
-			this.position = 'undefined';
+			throw Error('A position must be defined to add a new member to the team');
 		} else if (this.position !== 'crew' && this.position !== 'qc') {
 			this.constructor = Manager;
 		}
 	}
+
 	setPosition(position) {
 		this.position = position;
 		this.checkPosition();
+	}
+
+	setShift(day, startTime, endTime) {
+		const shift = new Shift(day, startTime, endTime);
+		day.addShift(this, shift);
 	}
 }
 

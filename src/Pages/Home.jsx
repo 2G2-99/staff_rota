@@ -27,8 +27,15 @@ const monday = currentWeek.days[0];
 // * Testing Week classes and methods
 //* Testing team member classes and methods
 const me = new TeamMember(9, 1, 1999, 'Santiago', 'Gomez', 'sm');
+const Aranza = new TeamMember(17, 7, 1978, 'AranZaZu', 'Rodriguez', 'gm');
+const Anna = new TeamMember(23, 1, 2000, 'Anna', 'Dabby', 'crew');
 
-console.log(me);
+me.setShift(monday, '07:00', '16:00');
+Aranza.setShift(monday, '07:00', '16:00');
+Anna.setShift(monday, '07:00', '16:00');
+console.log(monday.shifts);
+
+monday.removeShift(Anna.firstName);
 console.log(monday.shifts);
 // * Testing team member classes and methods
 
