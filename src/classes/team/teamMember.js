@@ -1,5 +1,4 @@
 import { differenceInYears } from 'date-fns/esm';
-import Manager from './manager';
 
 class TeamMember {
 	constructor(day, month, year, firstName, lastName, position) {
@@ -16,6 +15,7 @@ class TeamMember {
 		this.lastName = this.lastName.toLowerCase();
 		this.position = this.position.toLowerCase();
 	}
+
 	capitalisedName() {
 		this.firstName =
 			this.firstName.charAt(0).toUpperCase() +
@@ -26,14 +26,17 @@ class TeamMember {
 
 		return this.lastName.concat(', ', this.firstName);
 	}
+
 	calculateAge() {
 		const today = new Date();
 		this.age = differenceInYears(today, this.birthdate);
 	}
+
 	sayAge() {
 		this.calculateAge();
 		return this.age;
 	}
+
 	sayPosition() {
 		switch (this.position) {
 			case 'crew':
@@ -56,18 +59,43 @@ class TeamMember {
 				break;
 		}
 	}
+
 	checkPosition() {
 		if (!this.position) {
-			console.log('A position must be defined to add a new member to the team');
-			this.position = 'undefined';
+			throw Error('A position must be defined to add a new member to the team');
 		} else if (this.position !== 'crew' && this.position !== 'qc') {
 			this.constructor = Manager;
 		}
 	}
+
 	setPosition(position) {
 		this.position = position;
 		this.checkPosition();
 	}
 }
 
-export default TeamMember;
+class Manager extends TeamMember {
+	constructor(day, month, year, firstName, lastName, position) {
+		super(day, month, year, firstName, lastName, position);
+		this.checkManager();
+	}
+
+	checkManager() {
+		const isAManager =
+			this.position === 'sm'
+				? true
+				: this.position === 'am'
+				? true
+				: this.position === 'gm';
+
+		if (isAManager) {
+			console.log('Welcome to the Team Member Modifier');
+		} else {
+			console.log(
+				'You are not a Manager. You are not allowed to make any modifications'
+			);
+		}
+	}
+}
+
+export { TeamMember, Manager };

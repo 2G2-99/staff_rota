@@ -3,11 +3,10 @@ const END_OPENING = '16:00';
 const START_CLOSING = '15:00';
 
 class Shift {
-	constructor(date, startOn, end, other = []) {
+	constructor(date, startOn, end) {
 		this.date = date;
 		this.startOn = startOn;
 		this.end = end;
-		this.other = other;
 		this.checkShift();
 		this.type = this.typeOfShift();
 		this.hours = this.calculateShiftHours();
@@ -19,8 +18,7 @@ class Shift {
 	checkShift() {
 		if (!this.startOn || !this.end) {
 			throw new Error('A shift must include a starting and ending time');
-		}
-		if (this.end < this.startOn && this.end > '00:30') {
+		} else if (this.end < this.startOn && this.end > '00:30') {
 			throw new Error(
 				'You cannot set a shift where the starting time is ahead of the ending time'
 			);

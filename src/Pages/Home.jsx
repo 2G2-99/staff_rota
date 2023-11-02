@@ -1,3 +1,4 @@
+import { TeamMember } from '../classes/team/teamMember';
 import Week from '../classes/weekly/week';
 import {
 	currentShift,
@@ -20,75 +21,50 @@ function Home() {
 	);
 }
 
-//* Testing team member classes and methods
+// * Testing classes and methods
+const NextWeek = new Week(new Date(), 1);
+const Monday = NextWeek.days[0];
 
-// * Testing team member classes and methods
-// * Testing Week classes and methods
-const currentWeek = new Week(new Date());
+const Me = new TeamMember(9, 1, 1999, 'Santiago', 'Gomez', 'sm');
+const Aranza = new TeamMember(17, 7, 1978, 'AranZaZu', 'Rodriguez', 'gm');
+const Anna = new TeamMember(23, 1, 2000, 'Anna', 'Dabby', 'crew');
+const Greta = new TeamMember(10, 5, 1994, 'greTa', 'KosCardY', 'crew');
+const Julian = new TeamMember(20, 1, 1999, 'juliAn', 'PEREZ', 'SM');
+const Jacob = new TeamMember(10, 5, 2001, 'Jacob', 'WRIGHT', 'crew');
 
-currentWeek.days[0].addShift('07:00', '16:00');
-currentWeek.days[0].addShift('07:00', '16:00');
-currentWeek.days[0].addShift('07:00', '14:00');
-currentWeek.days[0].addShift('15:00', '00:00');
-currentWeek.days[0].addShift('16:00', '00:00');
-currentWeek.days[0].addShift('16:00', '00:00');
+// me.setShift(Monday, '07:00', '16:00');
+// Aranza.setShift(Monday, '07:00', '16:00');
+// Anna.setShift(Monday, '07:00', '16:00');
 
-currentWeek.days[1].addShift('07:00', '16:00');
-currentWeek.days[1].addShift('07:00', '16:00');
-currentWeek.days[1].addShift('07:00', '14:00');
-currentWeek.days[1].addShift('15:00', '00:00');
-currentWeek.days[1].addShift('16:00', '00:00');
-currentWeek.days[1].addShift('16:00', '00:00');
+Monday.addShift(Me, '07:00', '16:00');
+Monday.addShift(Aranza, '07:00', '16:00');
+Monday.addShift(Greta, '07:00', '16:00');
+Monday.addShift(Anna, '16:00', '00:00');
+Monday.addShift(Julian, '15:00', '00:00');
+Monday.addShift(Jacob, '16:00', '00:00');
 
-currentWeek.days[2].addShift('07:00', '16:00');
-currentWeek.days[2].addShift('07:00', '16:00');
-currentWeek.days[2].addShift('07:00', '14:00');
-currentWeek.days[2].addShift('15:00', '00:00');
-currentWeek.days[2].addShift('16:00', '00:00');
-currentWeek.days[2].addShift('16:00', '00:00');
+console.log(Monday.shifts);
+console.log(Monday.calculateHoursOfDay());
 
-currentWeek.days[3].addShift('07:00', '16:00');
-currentWeek.days[3].addShift('07:00', '16:00');
-currentWeek.days[3].addShift('07:00', '14:00');
-currentWeek.days[3].addShift('14:00', '22:00');
-currentWeek.days[3].addShift('15:00', '00:30');
-currentWeek.days[3].addShift('16:00', '00:30');
-currentWeek.days[3].addShift('18:00', '00:30');
+NextWeek.days[1].addShift(Me, '07:00', '16:00');
+NextWeek.days[1].addShift(Aranza, '07:00', '16:00');
+NextWeek.days[1].addShift(Greta, '07:00', '16:00');
+NextWeek.days[1].addShift(Anna, '16:00', '00:00');
+NextWeek.days[1].addShift(Julian, '15:00', '00:00');
+NextWeek.days[1].addShift(Jacob, '16:00', '00:00');
 
-currentWeek.days[4].addShift('07:00', '16:00');
-currentWeek.days[4].addShift('07:00', '16:00');
-currentWeek.days[4].addShift('07:00', '16:00');
-currentWeek.days[4].addShift('12:00', '21:00');
-currentWeek.days[4].addShift('12:00', '21:00');
-currentWeek.days[4].addShift('15:00', '00:30');
-currentWeek.days[4].addShift('16:00', '00:30');
-currentWeek.days[4].addShift('16:00', '00:30');
+NextWeek.days[1].peopleOnShift();
+console.log(NextWeek.days[1]);
 
-currentWeek.days[5].addShift('07:00', '16:00');
-currentWeek.days[5].addShift('07:00', '16:00');
-currentWeek.days[5].addShift('07:00', '14:00');
-currentWeek.days[5].addShift('12:00', '21:00');
-currentWeek.days[5].addShift('12:00', '21:00');
-currentWeek.days[5].addShift('15:00', '00:30');
-currentWeek.days[5].addShift('16:00', '00:30');
-currentWeek.days[5].addShift('16:00', '00:30');
+NextWeek.days[1].removeShift(Me);
 
-currentWeek.days[6].addShift('07:00', '16:00');
-currentWeek.days[6].addShift('07:00', '16:00');
-currentWeek.days[6].addShift('07:00', '14:00');
-currentWeek.days[6].addShift('12:00', '21:00');
-currentWeek.days[6].addShift('15:00', '00:00');
-currentWeek.days[6].addShift('16:00', '00:00');
-currentWeek.days[6].addShift('16:00', '00:00');
+console.log(NextWeek.days[1].calculateHoursOfDay());
+console.log(NextWeek.days[1].shifts);
 
-// Hours used on Day [0]
-currentWeek.days[0].calculateHoursOfDay();
-console.log(currentWeek.days[0].hours);
-
-// Hours used on the whole week
-console.log(currentWeek.days);
-currentWeek.calculateHoursOfWeek();
-console.log(currentWeek.hours);
-// * Testing Week classes and methods
+NextWeek.days[1].peopleOnShift();
+console.log(NextWeek.days[1]);
+// * Testing classes and methods
 
 export default Home;
+
+// TODO: Implement a way to connect both TeamMember and Week classes.

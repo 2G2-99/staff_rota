@@ -2,30 +2,43 @@ import { format, parse } from 'date-fns';
 import Shift from './shift';
 
 class Day {
-	constructor(dateString, shifts = []) {
+	constructor(dateString, shifts = new Map()) {
 		this.date = this.formatDateString(dateString);
 		this.shifts = shifts;
 	}
+
 	formatDateString(dateString) {
 		const formattedDateString = dateString.replace(/[/./]/g, '/');
 		return parse(formattedDateString, 'dd/MM/yy', new Date());
 	}
 
-	addShift(startOn, end, other) {
-		this.shifts.push(new Shift(this.date, startOn, end, other));
+	addShift(teamMember, startTime, endTime) {
+		const shift = new Shift(this.date, startTime, endTime);
+
+		if (this.shifts.has(teamMember)) {
+			throw new Error(
+				`Team member ${teamMember} already has a shift on this day.`
+			);
+		} else {
+			this.shifts.set(teamMember, shift);
+		}
 	}
 
-	removeShift(shift) {
-		if (!(shift instanceof Shift)) {
-			throw new Error('Invalid shift object');
-		}
+	modifyShift(teamMember, startTime, endTime) {
+		const shift = new Shift(this.date, startTime, endTime);
 
-		const index = this.shifts.indexOf(shift);
-		if (index === -1) {
-			throw new Error('Shift not found');
+		if (this.shifts.has(teamMember)) {
+			this.shifts.set(teamMember, shift);
 		} else {
-			this.shifts.splice(index, 1);
-			return `Shift at index ${index} deleted`;
+			throw new Error(`${teamMember} does not have a shift on this day.`);
+		}
+	}
+
+	removeShift(teamMember) {
+		if (this.shifts.has(teamMember)) {
+			this.shifts.delete(teamMember);
+		} else {
+			throw new Error('Given team member does not exist');
 		}
 	}
 
@@ -33,7 +46,7 @@ class Day {
 		let morning = 0;
 		let closing = 0;
 
-		for (const shift of this.shifts) {
+		for (const shift of this.shifts.values()) {
 			if (shift.type === 'split') {
 				morning++;
 				closing++;
@@ -44,7 +57,9 @@ class Day {
 			}
 		}
 
-		return { morning, closing };
+		// return { morning, closing };
+		this.morning = morning;
+		this.closing = closing;
 	}
 
 	getFormattedDate() {
@@ -57,11 +72,12 @@ class Day {
 	// }
 
 	calculateHoursOfDay() {
-		const totalHours = this.shifts
-			.map(shift => shift.hours)
-			.reduce((totalHours, hours) => totalHours + hours, 0);
+		const shiftsHours = [];
+		for (const shift of this.shifts.values()) {
+			shiftsHours.push(shift.hours);
+		}
 
-		this.hours = totalHours;
+		return shiftsHours.reduce((totalHours, hours) => totalHours + hours, 0);
 	}
 }
 
