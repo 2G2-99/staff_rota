@@ -1,22 +1,11 @@
 import { Link } from '@tanstack/react-router';
-import { useState } from 'react';
-import '../styles/Header.css';
+import '../styles/Navbar.css';
 
-function CustomLink({ to, children }) {
-	const [isActive, setIsActive] = useState(false);
-
-	const toggleActiveClass = () => setIsActive(!isActive);
-	// const removeActive = () => setIsActive(false);
-
-	// const handleClick = e => {
-	// 	if (onClick) {
-	// 		onClick(e);
-	// 	}
-	// 	toggleActiveClass();
-	// };
+function CustomLink({ to, children, setIsOpen }) {
+	const handleClick = () => setIsOpen(false);
 
 	return (
-		<Link to={to} onClick={toggleActiveClass} className="link">
+		<Link to={to} onClick={handleClick} className="link">
 			{children}
 		</Link>
 	);

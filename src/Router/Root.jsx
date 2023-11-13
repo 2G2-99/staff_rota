@@ -1,26 +1,41 @@
-import { Link, Outlet } from '@tanstack/react-router';
-import Header from '../components/Body/Header';
+import { Outlet } from '@tanstack/react-router';
+import Navbar from '../components/Body/Navbar';
 import Footer from '../components/Body/Footer';
 import CustomLink from '../components/CustomLink';
+import { useState } from 'react';
 
 function Root() {
+	const [isOpen, setIsOpen] = useState(false);
+
 	return (
 		<>
-			<Header siteTitle={'staff rota'}>
-				<li>
-					<CustomLink to="/">Home</CustomLink>
-				</li>
-				<li>
-					<CustomLink to="/week">Week</CustomLink>
-				</li>
-				<li>
-					<CustomLink to="/team">Team</CustomLink>
-				</li>
-				<li>
-					<CustomLink to="/team/test">Test</CustomLink>
-				</li>
-			</Header>
-			<Outlet />
+			<header className="App_Header">
+				<Navbar siteTitle={'staff rota'} isOpen={isOpen} setIsOpen={setIsOpen}>
+					<li>
+						<CustomLink to="/" setIsOpen={setIsOpen}>
+							Home
+						</CustomLink>
+					</li>
+					<li>
+						<CustomLink to="/week" setIsOpen={setIsOpen}>
+							Week
+						</CustomLink>
+					</li>
+					<li>
+						<CustomLink to="/team" setIsOpen={setIsOpen}>
+							Team
+						</CustomLink>
+					</li>
+					<li>
+						<CustomLink to="/team/test" setIsOpen={setIsOpen}>
+							Test
+						</CustomLink>
+					</li>
+				</Navbar>
+			</header>
+			<main className="App_main">
+				<Outlet />
+			</main>
 			<Footer />
 		</>
 	);

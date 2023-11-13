@@ -73,7 +73,7 @@ ul {
 			background-color: var(--light-grey);
 			padding: 10px;
 			transition: 0.7s ease-in-out;
-			height: 100vh;
+			/* height: 90%; */
 		}
 	}
 
