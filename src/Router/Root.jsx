@@ -3,6 +3,7 @@ import Navbar from '../components/Body/Navbar';
 import Footer from '../components/Body/Footer';
 import CustomLink from '../components/CustomLink';
 import { useState } from 'react';
+import '../styles/Root.css';
 
 function Root() {
 	const [isOpen, setIsOpen] = useState(false);

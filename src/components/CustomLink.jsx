@@ -5,7 +5,7 @@ function CustomLink({ to, children, setIsOpen }) {
 	const handleClick = () => setIsOpen(false);
 
 	return (
-		<Link to={to} onClick={handleClick} className="link">
+		<Link to={to} onClick={handleClick} className="nav_link">
 			{children}
 		</Link>
 	);

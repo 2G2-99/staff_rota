@@ -1,0 +1,25 @@
+header::after {
+	content: '';
+	display: block;
+	width: 100%;
+	background-color: var(--white);
+	height: 2rem;
+	background-image: linear-gradient(
+			45deg,
+			#d21033 25%,
+			rgba(255, 255, 255, 0.001) 25%,
+			rgba(255, 255, 255, 0.001) 75%,
+			#d21033 75%,
+			#d21033
+		),
+		linear-gradient(
+			45deg,
+			#d21033 25%,
+			rgba(255, 255, 255, 0.001) 25%,
+			rgba(255, 255, 255, 0.001) 75%,
+			#d21033 75%,
+			#d21033
+		);
+	background-size: calc(16px * 2) calc(16px * 2);
+	background-position: 0 0, 16px 16px;
+}
