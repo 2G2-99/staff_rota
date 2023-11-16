@@ -10,7 +10,7 @@ function Root() {
 
 	return (
 		<>
-			<header className="App_Header">
+			<header className="App_header">
 				<Navbar siteTitle={'staff rota'} isOpen={isOpen} setIsOpen={setIsOpen}>
 					<li>
 						<CustomLink to="/" setIsOpen={setIsOpen}>

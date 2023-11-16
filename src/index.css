@@ -1,27 +1,42 @@
 :root,
 html {
 	/* COLORS */
-	--red-tape: #d21033;
-	--white: #ffffff;
-	--light-grey: #eeeeee;
-	--black: #000000;
+	--red-tape: rgb(209, 16, 51);
+	--white: rgb(255, 255, 255);
+	--light-grey: rgb(237, 237, 237);
+	--black: rgb(0, 0, 0);
 
 	/* FONTS */
 	--text-base: 16px;
-	--xs-text: 0.375rem;
-	--sm-text: 0.5rem;
+	--xs-text: 0.5rem;
+	--sm-text: 0.75rem;
 	--md-text: 1.25rem;
 	--lg-text: 1.5rem;
 	--xl-text: 2rem;
 	--2xl-text: 2.5rem;
 	--3xl-text: 3rem;
 
+	/* SIZES */
+	--2xs-size: 16rem;
+	--xs-size: 20rem;
+	--sm-size: 24rem;
+	--md-size: 28rem;
+	--lg-size: 32rem;
+	--xl-size: 36rem;
+	--2xl-size: 42rem;
+	--3xl-size: 48rem;
+	--4xl-size: 56rem;
+	--5xl-size: 64rem;
+	--6xl-size: 72rem;
+	--7xl-size: 80rem;
+	--8xl-size: 90rem;
+	--full-size: 100%;
+
 	/* CONTAINER WIDTH */
 	--sm-w: 360px;
 	--md-w: 481px;
 	--lg-w: 769px;
 	--xl-w: 1024px;
-	--full-w: 100%;
 
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	font-size: var(--text-base);

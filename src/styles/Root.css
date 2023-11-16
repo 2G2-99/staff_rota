@@ -1,4 +1,5 @@
-header::after {
+header::after,
+main::after {
 	content: '';
 	display: block;
 	width: 100%;
