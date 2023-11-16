@@ -1,0 +1,87 @@
+@keyframes bounce {
+	from {
+		transform: translateY(0.25em);
+	}
+	to {
+		transform: translateY(-0.125em);
+	}
+}
+
+#hero {
+	padding: 1em 0;
+	background-color: var(--red-tape);
+	width: var(--full-size);
+	height: var(--full-size);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	display: flex;
+	flex-direction: column;
+}
+
+.hero-wrapper {
+	background-color: rgba(237, 237, 237, 0.8);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 3.5em 3.5em 1em 1em;
+	position: relative;
+	margin-top: 2em;
+}
+
+.date {
+	display: flex;
+	padding: 0.5em;
+
+	.current {
+		font-size: var(--lg-text);
+	}
+}
+
+.format {
+	font-size: var(--text-base);
+	font-weight: normal;
+
+	.quarter,
+	.week {
+		font-size: var(--md-text);
+		font-weight: bold;
+	}
+}
+
+.time {
+	font-size: var(--3xl-text);
+	background-color: var(--red-tape);
+	width: var(--full-size);
+	text-align: center;
+	color: var(--white);
+}
+
+.shift-time {
+	position: absolute;
+	top: 105%;
+	color: var(--white);
+	text-align: center;
+	font-weight: normal;
+
+	.current {
+		font-weight: bold;
+	}
+}
+
+.scroll-down_btn {
+	margin-top: 4em;
+	background-color: transparent;
+	border: none;
+	display: block;
+	color: var(--white);
+	font-weight: bold;
+	animation: bounce 0.7s ease-in-out 0s infinite alternate none;
+}
+
+.scroll-down_text {
+	color: var(--white);
+	font-size: var(--sm-text);
+}
