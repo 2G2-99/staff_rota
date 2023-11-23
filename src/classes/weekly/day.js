@@ -4,6 +4,8 @@ import Shift from './shift';
 class Day {
 	constructor(dateString, shifts = new Map()) {
 		this.date = this.formatDateString(dateString);
+		this.formattedDate = this.getFormattedDate();
+		this.dayName = this.getDayName();
 		this.shifts = shifts;
 	}
 
@@ -17,7 +19,7 @@ class Day {
 
 		if (this.shifts.has(teamMember)) {
 			throw new Error(
-				`Team member ${teamMember} already has a shift on this day.`
+				`Team member ${teamMember} already has a shift on this day.`,
 			);
 		} else {
 			this.shifts.set(teamMember, shift);
@@ -66,10 +68,9 @@ class Day {
 		return format(this.date, 'dd/MM/yyyy');
 	}
 
-	// ! Need to review the use of this method
-	// getRelativeDate() {
-	// 	return formatDistanceToNow(this.date, { addSuffix: true });
-	// }
+	getDayName() {
+		return format(this.date, 'E');
+	}
 
 	calculateHoursOfDay() {
 		const shiftsHours = [];
