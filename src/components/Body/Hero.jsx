@@ -13,13 +13,13 @@ function Hero() {
 	return (
 		<div id='hero'>
 			<div className='hero-wrapper'>
-				<div className='date'>
+				<div className='hero date'>
 					<p className='current'>{formattedDate}</p>
 				</div>
 				<div className='time'>
 					<p className='current'>{formattedTime}</p>
 				</div>
-				<div className='date'>
+				<div className='hero date'>
 					<p className='format'>
 						Quarter <span className='quarter'>{formattedQuarter}</span> - Week{' '}
 						<span className='week'>{formattedWeek}</span>

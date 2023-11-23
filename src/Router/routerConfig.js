@@ -1,7 +1,7 @@
 import { RootRoute, Route, Router } from '@tanstack/react-router';
 import Root from './Root';
 import Home from '../Pages/Home';
-import Week from '../Pages/Week';
+import Rota from '../Pages/Rota';
 
 const rootRoute = new RootRoute({
 	component: Root,
@@ -13,8 +13,8 @@ const indexRoute = new Route({
 });
 const weekRoute = new Route({
 	getParentRoute: () => rootRoute,
-	path: 'week',
-	component: Week,
+	path: 'rota',
+	component: Rota,
 });
 const teamRoute = new Route({ getParentRoute: () => rootRoute, path: 'team' });
 const teamIndexRoute = new Route({

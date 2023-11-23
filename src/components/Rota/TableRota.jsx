@@ -1,27 +1,22 @@
-import Week from '../../classes/weekly/week';
 import team from '../../data/team';
 import DateCell from './DateCell';
 import TeamRows from './TeamRows';
 
-const currentWeek = new Week(new Date());
-
-function TableRota() {
+function TableRota({ selectedWeek }) {
 	return (
-		<table>
-			<thead>
-				<tr>
-					<th>Team Member</th>
-					<DateCell currentWeek={currentWeek} />
+		<table className='table'>
+			<thead className='header'>
+				<tr className='row'>
+					<th className='heading team'>Team Member</th>
+					<DateCell currentWeek={selectedWeek} />
 				</tr>
 			</thead>
-			<tbody>
-				<TeamRows team={team} currentWeek={currentWeek} />
+			<tbody className='body'>
+				<TeamRows team={team} currentWeek={selectedWeek} />
 			</tbody>
-			<tfoot></tfoot>
+			<tfoot className='footer'></tfoot>
 		</table>
 	);
 }
 
 export default TableRota;
-
-console.log(currentWeek.days);
