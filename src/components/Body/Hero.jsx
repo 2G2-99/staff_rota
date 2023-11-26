@@ -11,7 +11,7 @@ import ScrollDownIcon from '../Icons/ScrollDownIcon';
 
 function Hero() {
 	return (
-		<div id='hero'>
+		<div id='hero' className='full-width'>
 			<div className='hero-wrapper'>
 				<div className='hero date'>
 					<p className='current'>{formattedDate}</p>

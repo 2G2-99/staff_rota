@@ -1,6 +1,5 @@
 import { Outlet } from '@tanstack/react-router';
 import Navbar from '../components/Body/Navbar';
-import Footer from '../components/Body/Footer';
 import CustomLink from '../components/CustomLink';
 import { useState } from 'react';
 import '../styles/Root.css';
@@ -10,7 +9,7 @@ function Root() {
 
 	return (
 		<>
-			<header className='App_header'>
+			<header id='App_header'>
 				<Navbar siteTitle={'staff rota'} isOpen={isOpen} setIsOpen={setIsOpen}>
 					<li>
 						<CustomLink to='/' setIsOpen={setIsOpen}>
@@ -34,12 +33,16 @@ function Root() {
 					</li>
 				</Navbar>
 			</header>
-			<main className='App_main'>
+			<div className='App_divider' />
+			<main id='App_main' className='content-grid'>
 				<Outlet />
 			</main>
-			<Footer />
+			<div className='App_divider' />
+			<footer id='App-footer'></footer>
 		</>
 	);
 }
 
 export default Root;
+
+// TODO: continue with the video

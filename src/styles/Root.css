@@ -1,5 +1,55 @@
-header::after,
-main::after {
+.content-grid {
+	--gap: clamp(1rem, 6vw, 3rem);
+	--content-max-width: 64ch;
+	--breakout-max-width: 80ch;
+	--feature-max-width: 96ch;
+
+	--breakout-size: calc(
+		((var(--breakout-max-width) - var(--content-max-width)) / 2)
+	);
+	--feature-size: calc(
+		((var(--feature-max-width) - var(--content-max-width)) / 2)
+	);
+
+	/* Column Areas */
+	--full-width: minmax(var(--gap), 1fr);
+	--content: min(100% - (var(--gap) * 2), var(--content-max-width));
+	--breakout: minmax(0, var(--breakout-size));
+	--feature: minmax(0, var(--feature-size));
+
+	display: grid;
+
+	grid-template-columns:
+		[full-width-start] var(--full-width)
+		[feature-start] var(--feature)
+		[breakout-start] var(--breakout)
+		[content-start] var(--content) [content-end]
+		var(--breakout) [breakout-end]
+		var(--feature) [feature-end]
+		var(--full-width) [full-width-end];
+}
+
+.content-grid > :not(.breakout, .full-width),
+.full-width > :not(.breakout, .full-width) {
+	grid-column: content;
+}
+
+.content-grid > .breakout {
+	grid-column: breakout;
+}
+
+.content-grid > .feature {
+	grid-column: feature;
+}
+
+.content-grid > .full-width {
+	grid-column: full-width;
+
+	display: grid;
+	grid-template-columns: inherit;
+}
+
+.App_divider {
 	content: '';
 	display: block;
 	width: 100%;

@@ -4,7 +4,7 @@ import TeamRows from './TeamRows';
 
 function TableRota({ selectedWeek }) {
 	return (
-		<table className='table'>
+		<table className='table feature'>
 			<thead className='header'>
 				<tr className='row'>
 					<th className='heading team'>Team Member</th>

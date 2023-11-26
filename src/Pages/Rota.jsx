@@ -6,7 +6,10 @@ const CurrentWeek = new Week(new Date());
 function Rota() {
 	return (
 		<>
-			<h2 className={`rota ${CurrentWeek.days[0].formattedDate}`}>
+			<h2
+				data-rota-date={`${CurrentWeek.days[0].formattedDate}`}
+				className='rota feature'
+			>
 				Week Rota {CurrentWeek.days[0].formattedDate}
 			</h2>
 			<TableRota selectedWeek={CurrentWeek} />
