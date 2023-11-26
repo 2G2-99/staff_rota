@@ -29,8 +29,8 @@
 		var(--full-width) [full-width-end];
 }
 
-.content-grid > :not(.breakout, .full-width),
-.full-width > :not(.breakout, .full-width) {
+.content-grid > :not(.breakout, .feature, .full-width),
+.full-width > :not(.breakout, .feature, .full-width) {
 	grid-column: content;
 }
 

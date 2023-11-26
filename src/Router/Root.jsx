@@ -44,5 +44,3 @@ function Root() {
 }
 
 export default Root;
-
-// TODO: continue with the video
