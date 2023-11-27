@@ -1,3 +1,49 @@
-h2.rota {
-	font-size: var(--2xl-text);
+thead th {
+	padding: 0.25em;
+	width: 10%;
+}
+
+.table {
+	background-color: var(--platinum);
+	border-collapse: collapse;
+	border: 1px solid var(--night);
+	margin: 2em 0;
+	text-align: center;
+	vertical-align: middle;
+
+	.title {
+		color: var(--ghost-white);
+		font-size: var(--xl-text);
+		font-weight: bold;
+		text-align: left;
+		margin-bottom: 0.5em;
+	}
+}
+
+.header {
+	background-color: var(--dark-grey);
+	color: var(--ghost-white);
+	/* font-size: 0.875rem; */
+	text-transform: uppercase;
+	letter-spacing: 2%;
+
+	.heading.team {
+		text-align: left;
+		width: 14%;
+	}
+}
+
+.body {
+	.rota.row:nth-child(odd) {
+		background-color: var(--ghost-white);
+	}
+
+	.rota.row:nth-child(even) {
+		background-color: var(--platinum);
+	}
+
+	.rota.cell.name {
+		padding-left: 0.25em;
+		text-align: left;
+	}
 }

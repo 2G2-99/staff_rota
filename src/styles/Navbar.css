@@ -7,7 +7,7 @@
 .logo {
 	text-decoration: none;
 	font-size: var(--lg-text);
-	color: var(--red-tape);
+	color: var(--fire-engine-red);
 	font-weight: bolder;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
@@ -16,7 +16,7 @@
 
 /* navbar */
 .navbar {
-	background-color: var(--white);
+	background-color: var(--ghost-white);
 	padding: 0.75rem 1.25rem;
 	display: flex;
 	justify-content: space-between;
@@ -36,12 +36,12 @@
 
 		.nav_link {
 			text-decoration: none;
-			color: var(--black);
+			color: var(--night);
 			user-select: none;
 		}
 
 		.nav_link.active {
-			border-bottom: 3px solid var(--red-tape);
+			border-bottom: 3px solid var(--fire-engine-red);
 			transition: all 0.2s ease-in-out;
 		}
 	}
@@ -87,7 +87,7 @@
 			align-items: center;
 			left: -100%;
 			width: 100%;
-			background-color: var(--light-grey);
+			background-color: var(--platinum);
 			padding: 10px;
 			transition: all 0.5s ease-in-out;
 			z-index: 10;

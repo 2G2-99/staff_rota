@@ -9,7 +9,7 @@
 
 #hero {
 	padding: 1em 0;
-	background-color: var(--red-tape);
+	background-color: var(--fire-engine-red);
 	width: var(--full-size);
 	height: var(--full-size);
 	display: flex;
@@ -53,16 +53,16 @@
 
 .time {
 	font-size: var(--3xl-text);
-	background-color: var(--red-tape);
+	background-color: var(--fire-engine-red);
 	width: var(--full-size);
 	text-align: center;
-	color: var(--white);
+	color: var(--ghost-white);
 }
 
 .shift-time {
 	position: absolute;
 	top: 105%;
-	color: var(--white);
+	color: var(--ghost-white);
 	text-align: center;
 	font-weight: normal;
 
@@ -76,12 +76,12 @@
 	background-color: transparent;
 	border: none;
 	display: block;
-	color: var(--white);
+	color: var(--ghost-white);
 	font-weight: bold;
 	animation: bounce 0.7s ease-in-out 0s infinite alternate none;
 }
 
 .scroll-down_text {
-	color: var(--white);
+	color: var(--ghost-white);
 	font-size: var(--sm-text);
 }
