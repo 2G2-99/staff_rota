@@ -6,7 +6,7 @@
 
 .logo {
 	text-decoration: none;
-	font-size: var(--lg-text);
+	font-size: clamp(var(--md-text), 5vw, var(--lg-text));
 	color: var(--red-tape);
 	font-weight: bolder;
 	text-transform: uppercase;
@@ -35,14 +35,16 @@
 		margin: 0;
 
 		.nav_link {
+			font-size: var(--base-text);
 			text-decoration: none;
 			color: var(--black);
 			user-select: none;
 		}
 
 		.nav_link.active {
+			font-size: var(--md-text);
 			border-bottom: 3px solid var(--red-tape);
-			transition: all 0.2s ease-in-out;
+			transition: all 0.4s ease-in-out;
 		}
 	}
 
@@ -72,7 +74,6 @@
 
 		.nav_menu.open {
 			transform: rotate(0.25turn);
-			/* transition: all 0.8s ease-in-out; */
 		}
 
 		.nav_list {
@@ -89,7 +90,7 @@
 			width: 100%;
 			background-color: var(--light-grey);
 			padding: 10px;
-			transition: all 0.5s ease-in-out;
+			transition: all 0.8s ease-in-out;
 			z-index: 10;
 		}
 	}

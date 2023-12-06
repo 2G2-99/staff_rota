@@ -36,23 +36,23 @@
 	padding: 0.5em;
 
 	.current {
-		font-size: var(--lg-text);
+		font-size: clamp(var(--text-base), 5vw, var(--lg-text));
 	}
 }
 
 .format {
-	font-size: var(--text-base);
+	font-size: clamp(var(--xs-text), 5vw, var(--text-base));
 	font-weight: normal;
 
 	.quarter,
 	.week {
-		font-size: var(--md-text);
+		font-size: clamp(var(--sm-text), 5vw, var(--md-text));
 		font-weight: bold;
 	}
 }
 
 .time {
-	font-size: var(--3xl-text);
+	font-size: clamp(var(--xl-text), 10vw, var(--3xl-text));
 	background-color: var(--red-tape);
 	width: var(--full-size);
 	text-align: center;
@@ -84,4 +84,5 @@
 .scroll-down_text {
 	color: var(--white);
 	font-size: var(--sm-text);
+	font-size: clamp(var(--xs-text), 5vw, var(--text-base));
 }
