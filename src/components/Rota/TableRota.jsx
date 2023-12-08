@@ -5,17 +5,17 @@ import '../../styles/Rota.css';
 
 function TableRota({ selectedWeek }) {
 	return (
-		<table className="table feature">
-			<thead className="header">
-				<tr className="row">
-					<th className="heading team">Team Member</th>
+		<table className='table feature'>
+			<thead className='header'>
+				<tr className='row'>
+					<th className='heading team'>Team Member</th>
 					<DateCell currentWeek={selectedWeek} />
 				</tr>
 			</thead>
-			<tbody className="body">
+			<tbody className='body'>
 				<TeamRows team={team} currentWeek={selectedWeek} />
 			</tbody>
-			<tfoot className="footer"></tfoot>
+			<tfoot className='footer'></tfoot>
 		</table>
 	);
 }

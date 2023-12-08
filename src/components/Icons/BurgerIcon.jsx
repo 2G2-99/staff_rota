@@ -1,9 +1,9 @@
-function BurgerIcon() {
+function BurgerIcon({ width, height }) {
 	return (
 		<svg
 			xmlns='http://www.w3.org/2000/svg'
-			width='2em'
-			height='2em'
+			width={width}
+			height={height}
 			viewBox='0 0 512 512'
 		>
 			<path
