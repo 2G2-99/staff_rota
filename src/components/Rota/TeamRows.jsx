@@ -1,4 +1,4 @@
-import EditShift from './EditShift';
+import EditShiftButtons from './EditShiftButtons';
 
 function TeamRows({ team, currentWeek }) {
 	return team.map(teamMember => (
@@ -17,7 +17,7 @@ function ShiftCell({ currentWeek, teamMember }) {
 	return currentWeek.days.map(day => (
 		<td key={day.dayName} className="rota cell shift">
 			<p className="shift-data">{day.shifts.get(teamMember)?.formatShift()}</p>
-			<EditShift />
+			<EditShiftButtons />
 		</td>
 	));
 }
