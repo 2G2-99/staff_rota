@@ -4,6 +4,8 @@ import Button from '../Button';
 import BurgerIcon from '../Icons/BurgerIcon';
 import CrossIcon from '../Icons/CrossIcon';
 
+import button from '../../styles/Button.module.css';
+
 function Navbar({ siteTitle, children, isOpen, setIsOpen }) {
 	const toggleOpen = () => setIsOpen(!isOpen);
 
@@ -15,7 +17,7 @@ function Navbar({ siteTitle, children, isOpen, setIsOpen }) {
 			<ul className={`nav_list ${isOpen ? 'open' : ''}`}>{children}</ul>
 
 			<Button
-				className={`nav_menu ${isOpen ? 'open' : ''}`}
+				className={`${button.nav_menu} ${isOpen ? button.open : ''}`}
 				onClick={toggleOpen}
 			>
 				{/* isOpen => cross if !isOpen => burger */}

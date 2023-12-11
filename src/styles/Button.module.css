@@ -1,0 +1,68 @@
+/* Navbar */
+.nav_menu {
+	display: none;
+	border: none;
+	background-color: transparent;
+}
+
+@media screen and (max-width: 768px) {
+	.nav_menu {
+		display: block;
+		cursor: pointer;
+	}
+
+	.nav_menu {
+		position: relative;
+		z-index: 99;
+		transition: all 0.8s ease-in-out;
+	}
+
+	.open {
+		transform: rotate(0.25turn);
+		/* transition: all 0.8s ease-in-out; */
+	}
+}
+
+/* Scroll down */
+.scroll {
+	margin-top: 4em;
+	background-color: transparent;
+	border: none;
+	display: block;
+	color: var(--white);
+	font-weight: bold;
+	animation: bounce 0.7s ease-in-out 0s infinite alternate none;
+}
+
+/* Rota */
+
+/* !need to make the style work! */
+.shift {
+	animation: blur-in-expand 0.2s linear both;
+
+	flex: 2;
+}
+
+.edit {
+	/* !Remember to change color */
+	background-color: lightblue;
+}
+
+.delete {
+	/* !Remember to change color */
+	background-color: pink;
+}
+
+.shift:active {
+	animation: scale-down-center 0.2s;
+}
+
+/* Modal */
+.close {
+}
+
+.accept {
+}
+
+.cancel {
+}

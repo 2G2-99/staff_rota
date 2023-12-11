@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import Button from '../Button';
 import Modal from './Modal';
 import { ModalContext } from './ModalContext';
+import button from '../../styles/Button.module.css';
 
 function EditShiftModal() {
 	const { isEditModalOpen, setEditModalOpen } = useContext(ModalContext);
@@ -22,10 +23,10 @@ function EditShiftModal() {
 				</form>
 			</div>
 			<div className='modal_footer'>
-				<Button className={'modal-accept-btn'} form='edit-shift' type='submit'>
+				<Button className={button.accept} form='edit-shift' type='submit'>
 					Accept
 				</Button>
-				{/* <Button className={'modal-cancel-btn'}>Cancel</Button> */}
+				<Button className={button.cancel}>Cancel</Button>
 			</div>
 		</Modal>
 	);

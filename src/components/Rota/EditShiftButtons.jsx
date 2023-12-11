@@ -4,6 +4,8 @@ import DeleteIcon from '../Icons/DeleteIcon';
 import EditIcon from '../Icons/EditIcon';
 import { ModalContext } from '../Modal/ModalContext';
 
+import button from '../../styles/Button.module.css';
+
 function EditShiftButtons() {
 	const { setEditModalOpen } = useContext(ModalContext);
 
@@ -11,10 +13,10 @@ function EditShiftButtons() {
 
 	return (
 		<div className='edit_group'>
-			<Button className={'shift edit'} onClick={handleEdit}>
+			<Button className={`${button.shift} ${button.edit}`} onClick={handleEdit}>
 				<EditIcon />
 			</Button>
-			<Button className={'shift  delete'}>
+			<Button className={`${button.shift} ${button.delete}`}>
 				<DeleteIcon />
 			</Button>
 		</div>
