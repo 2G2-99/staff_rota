@@ -45,12 +45,6 @@
 			transition: all 0.2s ease-in-out;
 		}
 	}
-
-	.nav_menu {
-		display: none;
-		border: none;
-		background-color: transparent;
-	}
 }
 
 /* media queries */
@@ -58,22 +52,6 @@
 	.navbar {
 		padding: 0.5rem 1rem;
 		justify-content: space-between;
-
-		.nav_menu {
-			display: block;
-			cursor: pointer;
-		}
-
-		.nav_menu {
-			position: relative;
-			z-index: 99;
-			transition: all 0.8s ease-in-out;
-		}
-
-		.nav_menu.open {
-			transform: rotate(0.25turn);
-			/* transition: all 0.8s ease-in-out; */
-		}
 
 		.nav_list {
 			position: fixed;

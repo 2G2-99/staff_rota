@@ -33,33 +33,8 @@ h2.rota {
 .edit_group {
 	display: flex;
 	justify-content: space-between;
-
-	.shift {
-		visibility: hidden;
-	}
 }
 
 .edit_group:hover {
 	background-color: azure;
-
-	.shift {
-		visibility: visible;
-		animation: blur-in-expand 0.2s linear both;
-
-		flex: 2;
-	}
-
-	.shift.edit {
-		/* !Remember to change color */
-		background-color: lightblue;
-	}
-
-	.shift.delete {
-		/* !Remember to change color */
-		background-color: pink;
-	}
-
-	.shift:active {
-		animation: scale-down-center 0.2s;
-	}
 }

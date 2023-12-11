@@ -71,7 +71,7 @@
 	}
 }
 
-.scroll-down_btn {
+/* .scroll-down_btn {
 	margin-top: 4em;
 	background-color: transparent;
 	border: none;
@@ -79,7 +79,7 @@
 	color: var(--white);
 	font-weight: bold;
 	animation: bounce 0.7s ease-in-out 0s infinite alternate none;
-}
+} */
 
 .scroll-down_text {
 	color: var(--white);

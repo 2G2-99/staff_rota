@@ -8,6 +8,7 @@ import {
 import '../../styles/Hero.css';
 import Button from '../Button';
 import ScrollDownIcon from '../Icons/ScrollDownIcon';
+import button from '../../styles/Button.module.css';
 
 function Hero() {
 	return (
@@ -31,7 +32,7 @@ function Hero() {
 					</p>
 				</div>
 			</div>
-			<Button className={'scroll-down_btn'}>
+			<Button className={button.scroll}>
 				{/* Scroll Down Icon */}
 				<ScrollDownIcon />
 			</Button>
