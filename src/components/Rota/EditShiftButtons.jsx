@@ -12,12 +12,12 @@ function EditShiftButtons() {
 	const handleEdit = () => setEditModalOpen(true);
 
 	return (
-		<div className='edit_group'>
+		<div className={`${button.group}`}>
 			<Button className={`${button.shift} ${button.edit}`} onClick={handleEdit}>
-				<EditIcon />
+				<EditIcon width={'2em'} height={'2em'} />
 			</Button>
 			<Button className={`${button.shift} ${button.delete}`}>
-				<DeleteIcon />
+				<DeleteIcon width={'2em'} height={'2em'} />
 			</Button>
 		</div>
 	);
