@@ -19,7 +19,11 @@ function Navbar({ siteTitle, children, isOpen, setIsOpen }) {
 				onClick={toggleOpen}
 			>
 				{/* isOpen => cross if !isOpen => burger */}
-				{isOpen ? <CrossIcon width={'2em'} height={'2em'} /> : <BurgerIcon />}
+				{isOpen ? (
+					<CrossIcon width={'2em'} height={'2em'} />
+				) : (
+					<BurgerIcon width={'2em'} height={'2em'} />
+				)}
 			</Button>
 		</nav>
 	);

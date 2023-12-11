@@ -1,6 +1,4 @@
-import Button from '../Button';
-import DeleteIcon from '../Icons/DeleteIcon';
-import EditIcon from '../Icons/EditIcon';
+import EditShiftButtons from './EditShiftButtons';
 
 function TeamRows({ team, currentWeek }) {
 	return team.map(teamMember => (
@@ -19,15 +17,8 @@ function ShiftCell({ currentWeek, teamMember }) {
 	return currentWeek.days.map(day => (
 		<td key={day.dayName} className='rota cell shift'>
 			<p className='shift-data'>{day.shifts.get(teamMember)?.formatShift()}</p>
-
-			<div className='btn-container'>
-				<Button className={'shift edit'}>
-					<EditIcon />
-				</Button>
-				<Button className={'shift  delete'}>
-					<DeleteIcon />
-				</Button>
-			</div>
+			{/* EDITSHIFTBTNS */}
+			<EditShiftButtons />
 		</td>
 	));
 }
