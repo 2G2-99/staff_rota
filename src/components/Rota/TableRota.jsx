@@ -1,6 +1,7 @@
 import team from '../../data/team';
 import DateCell from './DateCell';
 import TeamRows from './TeamRows';
+import '../../styles/Rota.css';
 
 function TableRota({ selectedWeek }) {
 	return (
