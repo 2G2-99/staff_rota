@@ -3,6 +3,7 @@ import Week from '../classes/weekly/week';
 import EditShiftModal from '../components/Modal/EditShiftModal';
 import { ModalContext } from '../components/Modal/ModalContext';
 import TableRota from '../components/Rota/TableRota';
+import '../styles/Rota.css';
 
 const CurrentWeek = new Week(new Date());
 

@@ -1,10 +1,12 @@
 :root,
 html {
 	/* COLORS */
-	--red-tape: rgb(209, 16, 51);
-	--white: rgb(255, 255, 255);
-	--light-grey: rgb(237, 237, 237);
-	--black: rgb(0, 0, 0);
+	--dark-grey: #252627;
+	--fire-brick: #af2025;
+	--fire-engine-red: #c92027;
+	--ghost-white: #fafaff;
+	--night: #141115;
+	--platinum: #daddd8;
 
 	/* FONTS */
 	--text-base: 16px;
@@ -38,6 +40,7 @@ html {
 	--lg-w: 769px;
 	--xl-w: 1024px;
 
+	color: var(--night);
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	font-size: var(--text-base);
 	line-height: 1.4;
