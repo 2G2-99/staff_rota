@@ -12,7 +12,7 @@ function TeamRows({ team, currentWeek }) {
 }
 
 function TeamMemberCell({ teamMember }) {
-	return <td className='rota cell name'>{teamMember.capitalisedName()}</td>;
+	return <th className='rota cell name'>{teamMember.capitalisedName()}</th>;
 }
 
 function ShiftCell({ currentWeek, teamMember }) {
