@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import Button from '../Button';
 import CrossIcon from '../Icons/CrossIcon';
 
+import modal from '../../styles/modal.module.css';
 import button from '../../styles/Button.module.css';
 
 function Modal({ isOpen, hasCloseBtn, onClose, children }) {
@@ -32,9 +33,12 @@ function Modal({ isOpen, hasCloseBtn, onClose, children }) {
 	}, [isOpen, modalRef]);
 
 	return (
-		<dialog ref={modalRef} className='modal' onKeyDown={handleESCKey}>
+		<dialog ref={modalRef} className={modal.layout} onKeyDown={handleESCKey}>
 			{hasCloseBtn && (
-				<Button className={button.close} onClick={handleCloseModal}>
+				<Button
+					className={`${button.close} ${button.action}`}
+					onClick={handleCloseModal}
+				>
 					{/* isOpen => cross if !isOpen => burger */}
 					<CrossIcon width={'2em'} height={'2em'} />
 				</Button>
