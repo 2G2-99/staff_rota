@@ -150,7 +150,7 @@
 
 .close {
 	position: absolute;
-	right: -4%;
+	right: -10%;
 	top: -10%;
 	box-shadow: 5px 5px 2px var(--dark-grey);
 	background-color: var(--ghost-white);

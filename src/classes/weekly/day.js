@@ -23,6 +23,7 @@ class Day {
 			);
 		} else {
 			this.shifts.set(teamMember, shift);
+			console.log('Added shift for team member:', teamMember);
 		}
 	}
 
@@ -39,6 +40,7 @@ class Day {
 	removeShift(teamMember) {
 		if (this.shifts.has(teamMember)) {
 			this.shifts.delete(teamMember);
+			console.log('Removed shift for team member:', teamMember);
 		} else {
 			throw new Error('Given team member does not exist');
 		}
