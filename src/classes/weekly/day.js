@@ -79,7 +79,10 @@ class Day {
 			shiftsHours.push(shift.hours);
 		}
 
-		return shiftsHours.reduce((totalHours, hours) => totalHours + hours, 0);
+		this.hours = shiftsHours.reduce(
+			(totalHours, hours) => totalHours + hours,
+			0,
+		);
 	}
 }
 
