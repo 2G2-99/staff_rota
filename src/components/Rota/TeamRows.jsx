@@ -1,3 +1,4 @@
+import table from '../../styles/Table.module.css';
 import EditShiftButtons from './EditShiftButtons';
 
 function TeamRows({ team, currentWeek }) {
@@ -14,7 +15,7 @@ function TeamRows({ team, currentWeek }) {
 	};
 
 	return team.map(teamMember => (
-		<tr key={teamMember.capitalisedName()} className='rota row'>
+		<tr key={teamMember.capitalisedName()} className={table.row}>
 			<TeamMemberCell teamMember={teamMember} />
 			<ShiftCell
 				teamMember={teamMember}
@@ -26,14 +27,13 @@ function TeamRows({ team, currentWeek }) {
 }
 
 function TeamMemberCell({ teamMember }) {
-	return <th className='rota cell name'>{teamMember.capitalisedName()}</th>;
+	return <th className={table.name}>{teamMember.capitalisedName()}</th>;
 }
 
 function ShiftCell({ currentWeek, teamMember, onDeleteShift }) {
 	return currentWeek.days.map(day => (
-		<td key={day.dayName} className='rota cell shift'>
+		<td key={day.dayName} className={table.shift}>
 			<ShiftData day={day} teamMember={teamMember} />
-
 			<EditShiftButtons
 				teamMember={teamMember}
 				day={day}
@@ -45,7 +45,7 @@ function ShiftCell({ currentWeek, teamMember, onDeleteShift }) {
 
 function ShiftData({ day, teamMember }) {
 	return (
-		<p className='shift-data'>{day.shifts.get(teamMember)?.formatShift()}</p>
+		<p className={table.data}>{day.shifts.get(teamMember)?.formatShift()}</p>
 	);
 }
 

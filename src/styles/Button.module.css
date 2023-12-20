@@ -104,15 +104,12 @@
 }
 
 /* Rota */
-.shift {
-	visibility: hidden;
-}
-
-.group:hover {
+.group {
 	.shift {
 		visibility: visible;
 		animation: blur-in-expand 0.3s linear both;
 		flex: 2;
+		border: none;
 
 		&:active {
 			animation: blur-out-contract 0.3s linear both;
