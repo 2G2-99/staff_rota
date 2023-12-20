@@ -23,7 +23,6 @@ class Day {
 			);
 		} else {
 			this.shifts.set(teamMember, shift);
-			console.log('Added shift for team member:', teamMember);
 		}
 	}
 

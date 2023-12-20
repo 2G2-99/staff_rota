@@ -8,7 +8,7 @@ import team from '../data/team';
 
 const CurrentWeek = new Week(new Date());
 
-// Add shifts for each team member on each day
+// *Add shifts for each team member on each day
 for (const teamMember of team) {
 	for (const day of CurrentWeek.days) {
 		const startTime = '07:00';
@@ -22,13 +22,6 @@ function Rota() {
 
 	return (
 		<>
-			<h2
-				data-rota-date={`${CurrentWeek.days[0].formattedDate}`}
-				className='rota feature'
-			>
-				Week Rota {CurrentWeek.days[0].formattedDate}
-			</h2>
-
 			<ModalContext.Provider value={{ isEditModalOpen, setEditModalOpen }}>
 				<TableRota selectedWeek={CurrentWeek} />
 				<EditShiftModal />
@@ -38,6 +31,3 @@ function Rota() {
 }
 
 export default Rota;
-
-// console.log(CurrentWeek.days);
-// console.log(CurrentWeek.days[0].shifts.keys());
