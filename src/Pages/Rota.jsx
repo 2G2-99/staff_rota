@@ -29,5 +29,9 @@ function Rota() {
 		</>
 	);
 }
+// *The method need to be called upon initialisation to be able to have a first calculation
+CurrentWeek.calculateHoursOfWeek();
 
 export default Rota;
+
+// TODO: Find a way to update total hours every time a shift is added, edited or deleted
