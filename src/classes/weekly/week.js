@@ -9,6 +9,7 @@ class Week {
 		this.weeksToAdvance = weeksToAdvance;
 		this.startOn = this.getAdvancedWeekStart();
 		this.days = this.addDaysToWeek();
+		this.calculateHoursOfWeek();
 	}
 
 	getAdvancedWeekStart() {

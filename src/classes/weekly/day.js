@@ -7,6 +7,7 @@ class Day {
 		this.formattedDate = this.getFormattedDate();
 		this.dayName = this.getDayName();
 		this.shifts = shifts;
+		this.calculateHoursOfDay();
 	}
 
 	formatDateString(dateString) {
