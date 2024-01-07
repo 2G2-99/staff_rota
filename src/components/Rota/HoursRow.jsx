@@ -12,7 +12,7 @@ function HoursRow({ currentWeek }) {
 
 			<tr className={table.row}>
 				<th className={table.total}> total Hours</th>
-				<td className={table.data}>
+				<td className={table.data} colSpan={7}>
 					<p>{totalHours}</p>
 				</td>
 			</tr>
