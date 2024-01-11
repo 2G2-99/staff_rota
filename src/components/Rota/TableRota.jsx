@@ -3,6 +3,7 @@ import DateCell from './DateCell';
 import TeamRows from './TeamRows';
 import '../../styles/Rota.css';
 import table from '../../styles/Table.module.css';
+import HoursRow from './HoursRow';
 
 function TableRota({ selectedWeek }) {
 	return (
@@ -26,7 +27,9 @@ function TableRota({ selectedWeek }) {
 					<TeamRows team={team} currentWeek={selectedWeek} />
 				</tbody>
 
-				<tfoot className={table.footer}></tfoot>
+				<tfoot className={table.footer}>
+					<HoursRow currentWeek={selectedWeek} />
+				</tfoot>
 			</table>
 		</div>
 	);

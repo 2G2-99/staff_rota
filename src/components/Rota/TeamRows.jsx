@@ -32,7 +32,18 @@ function TeamMemberCell({ teamMember }) {
 
 function ShiftCell({ currentWeek, teamMember, onDeleteShift }) {
 	return currentWeek.days.map(day => (
-		<td key={day.dayName} className={table.shift}>
+		<DayData
+			key={day.dayName}
+			day={day}
+			teamMember={teamMember}
+			onDeleteShift={onDeleteShift}
+		/>
+	));
+}
+
+function DayData({ day, teamMember, onDeleteShift }) {
+	return (
+		<td className={table.shift}>
 			<ShiftData day={day} teamMember={teamMember} />
 			<EditShiftButtons
 				teamMember={teamMember}
@@ -40,7 +51,7 @@ function ShiftCell({ currentWeek, teamMember, onDeleteShift }) {
 				onDeleteShift={onDeleteShift}
 			/>
 		</td>
-	));
+	);
 }
 
 function ShiftData({ day, teamMember }) {

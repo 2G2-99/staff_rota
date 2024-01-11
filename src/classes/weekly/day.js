@@ -7,6 +7,7 @@ class Day {
 		this.formattedDate = this.getFormattedDate();
 		this.dayName = this.getDayName();
 		this.shifts = shifts;
+		this.calculateHoursOfDay();
 	}
 
 	formatDateString(dateString) {
@@ -23,6 +24,7 @@ class Day {
 			);
 		} else {
 			this.shifts.set(teamMember, shift);
+			this.calculateHoursOfDay();
 		}
 	}
 
@@ -31,6 +33,7 @@ class Day {
 
 		if (this.shifts.has(teamMember)) {
 			this.shifts.set(teamMember, shift);
+			this.calculateHoursOfDay();
 		} else {
 			throw new Error(`${teamMember} does not have a shift on this day.`);
 		}
@@ -40,6 +43,7 @@ class Day {
 		if (this.shifts.has(teamMember)) {
 			this.shifts.delete(teamMember);
 			console.log('Removed shift for team member:', teamMember);
+			this.calculateHoursOfDay();
 		} else {
 			throw new Error('Given team member does not exist');
 		}
