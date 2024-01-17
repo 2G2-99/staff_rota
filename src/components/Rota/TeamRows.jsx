@@ -1,17 +1,14 @@
+import { useContext } from 'react';
 import table from '../../styles/Table.module.css';
 import EditShiftButtons from './EditShiftButtons';
+import { ShiftsContext } from '../../contexts/ShiftsContext';
 
 function TeamRows({ team, currentWeek }) {
+	const { deleteShift } = useContext(ShiftsContext);
+
 	const handleDeleteShift = (teamMember, day) => {
-		if (day.shifts.has(teamMember)) {
-			try {
-				day.removeShift(teamMember);
-			} catch (error) {
-				console.error(error);
-			}
-		} else {
-			console.log('No shifts to remove for team member:', teamMember);
-		}
+		// Call the deleteShift function with the team member and the date of the shift to be deleted
+		deleteShift(teamMember, day);
 	};
 
 	return team.map(teamMember => (

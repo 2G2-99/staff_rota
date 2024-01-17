@@ -39,7 +39,7 @@ class Day {
 		}
 	}
 
-	removeShift(teamMember) {
+	removeShiftFrom(teamMember) {
 		if (this.shifts.has(teamMember)) {
 			this.shifts.delete(teamMember);
 			console.log('Removed shift for team member:', teamMember);

@@ -4,8 +4,12 @@ import TeamRows from './TeamRows';
 import '../../styles/Rota.css';
 import table from '../../styles/Table.module.css';
 import HoursRow from './HoursRow';
+import { useContext } from 'react';
+import { ShiftsContext } from '../../contexts/ShiftsContext';
 
-function TableRota({ selectedWeek }) {
+function TableRota() {
+	const { shifts: selectedWeek } = useContext(ShiftsContext);
+
 	return (
 		<div className='table-container feature'>
 			<table className={table.layout}>
