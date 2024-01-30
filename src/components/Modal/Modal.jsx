@@ -7,45 +7,45 @@ import modal from '../../styles/modal.module.css';
 import button from '../../styles/Button.module.css';
 
 function Modal({ isOpen, hasCloseBtn, onClose, children }) {
-	const modalRef = useRef(null);
+  const modalRef = useRef(null);
 
-	const handleCloseModal = () => {
-		if (onClose) {
-			onClose();
-		}
-	};
+  const handleCloseModal = () => {
+    if (onClose) {
+      onClose();
+    }
+  };
 
-	const handleESCKey = e => {
-		if (e.key === 'Escape') {
-			handleCloseModal();
-		}
-	};
+  const handleESCKey = e => {
+    if (e.key === 'Escape') {
+      handleCloseModal();
+    }
+  };
 
-	useEffect(() => {
-		const modalElement = modalRef.current;
-		if (modalElement) {
-			if (isOpen) {
-				modalElement.showModal();
-			} else {
-				modalElement.close();
-			}
-		}
-	}, [isOpen, modalRef]);
+  useEffect(() => {
+    const modalElement = modalRef.current;
+    if (modalElement) {
+      if (isOpen) {
+        modalElement.showModal();
+      } else {
+        modalElement.close();
+      }
+    }
+  }, [isOpen, modalRef]);
 
-	return (
-		<dialog ref={modalRef} className={modal.layout} onKeyDown={handleESCKey}>
-			{hasCloseBtn && (
-				<Button
-					className={`${button.close} ${button.action}`}
-					onClick={handleCloseModal}
-				>
-					{/* isOpen => cross if !isOpen => burger */}
-					<CrossIcon width={'2em'} height={'2em'} />
-				</Button>
-			)}
-			{children}
-		</dialog>
-	);
+  return (
+    <dialog ref={modalRef} className={modal.layout} onKeyDown={handleESCKey}>
+      {hasCloseBtn && (
+        <Button
+          className={`${button.close} ${button.action}`}
+          onClick={handleCloseModal}
+        >
+          {/* isOpen => cross if !isOpen => burger */}
+          <CrossIcon width={'2em'} height={'2em'} />
+        </Button>
+      )}
+      {children}
+    </dialog>
+  );
 }
 
 export default Modal;

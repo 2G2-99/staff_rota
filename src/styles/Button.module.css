@@ -1,44 +1,44 @@
 @keyframes blur-in-expand {
-	0% {
-		transform: scale(0);
-		filter: blur(12px);
-		opacity: 0;
-	}
-	100% {
-		transform: scale(1);
-		filter: blur(0);
-		opacity: 1;
-	}
+  0% {
+    transform: scale(0);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0);
+    opacity: 1;
+  }
 }
 
 @keyframes blur-out-contract {
-	0% {
-		transform: scale(1);
-		filter: blur(0.01px);
-	}
-	100% {
-		transform: scale(0);
-		filter: blur(12px);
-		opacity: 0;
-	}
+  0% {
+    transform: scale(1);
+    filter: blur(0.01px);
+  }
+  100% {
+    transform: scale(0);
+    filter: blur(12px);
+    opacity: 0;
+  }
 }
 
 @keyframes scale-up-center {
-	0% {
-		transform: scale(1);
-	}
-	100% {
-		transform: scale(1.12);
-	}
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.12);
+  }
 }
 
 @keyframes scale-down-center {
-	0% {
-		transform: scale(1.12);
-	}
-	100% {
-		transform: scale(0.8);
-	}
+  0% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(0.8);
+  }
 }
 
 /* ----------------------------------------------
@@ -49,107 +49,107 @@
 ---------------------------------------------- */
 
 .group {
-	display: flex;
-	user-select: none;
+  display: flex;
+  user-select: none;
 }
 
 .action {
-	border-radius: 0.25em;
-	padding: 0.25em;
-	border: none;
+  border-radius: 0.25em;
+  padding: 0.25em;
+  border: none;
 
-	&:hover {
-		animation: scale-up-center 0.6s;
-		transform: scale(1.12);
-	}
+  &:hover {
+    animation: scale-up-center 0.6s;
+    transform: scale(1.12);
+  }
 
-	&:active {
-		animation: scale-down-center 0.3s;
-	}
+  &:active {
+    animation: scale-down-center 0.3s;
+  }
 }
 
 /* Navbar */
 .nav_menu {
-	display: none;
-	border: none;
-	background-color: transparent;
+  display: none;
+  border: none;
+  background-color: transparent;
 }
 
 @media screen and (max-width: 768px) {
-	.nav_menu {
-		display: block;
-		cursor: pointer;
-	}
+  .nav_menu {
+    display: block;
+    cursor: pointer;
+  }
 
-	.nav_menu {
-		position: relative;
-		z-index: 99;
-		transition: all 0.8s ease-in-out;
-	}
+  .nav_menu {
+    position: relative;
+    z-index: 99;
+    transition: all 0.8s ease-in-out;
+  }
 
-	.open {
-		transform: rotate(0.25turn);
-	}
+  .open {
+    transform: rotate(0.25turn);
+  }
 }
 
 /* Scroll down */
 .scroll {
-	margin-top: 4em;
-	background-color: transparent;
-	border: none;
-	display: block;
-	color: var(--ghost-white);
-	font-weight: bold;
-	animation: bounce 0.7s ease-in-out 0s infinite alternate none;
+  margin-top: 4em;
+  background-color: transparent;
+  border: none;
+  display: block;
+  color: var(--ghost-white);
+  font-weight: bold;
+  animation: bounce 0.7s ease-in-out 0s infinite alternate none;
 }
 
 /* Rota */
 .group {
-	.shift {
-		visibility: visible;
-		animation: blur-in-expand 0.3s linear both;
-		flex: 2;
-		border: none;
+  .shift {
+    visibility: visible;
+    animation: blur-in-expand 0.3s linear both;
+    flex: 2;
+    border: none;
 
-		&:active {
-			animation: blur-out-contract 0.3s linear both;
-		}
+    &:active {
+      animation: blur-out-contract 0.3s linear both;
+    }
 
-		&.edit {
-			background-color: var(--teal);
-		}
+    &.edit {
+      background-color: var(--teal);
+    }
 
-		&.delete {
-			background-color: var(--fire-brick);
-		}
-	}
+    &.delete {
+      background-color: var(--fire-brick);
+    }
+  }
 }
 
 /* Modal */
 .group {
-	&.gap {
-		gap: 0.5em;
-		justify-content: center;
-	}
+  &.gap {
+    gap: 0.5em;
+    justify-content: center;
+  }
 
-	.accept {
-		background-color: var(--asparagus);
-		color: var(--night);
-		font-size: var(--md-text);
-	}
+  .accept {
+    background-color: var(--asparagus);
+    color: var(--night);
+    font-size: var(--md-text);
+  }
 
-	.cancel {
-		background-color: var(--fire-brick);
-		color: var(--ghost-white);
-		font-size: var(--md-text);
-	}
+  .cancel {
+    background-color: var(--fire-brick);
+    color: var(--ghost-white);
+    font-size: var(--md-text);
+  }
 }
 
 .close {
-	position: absolute;
-	right: -10%;
-	top: -10%;
-	box-shadow: 5px 5px 2px var(--dark-grey);
-	background-color: var(--ghost-white);
-	border: 3px solid var(--fire-engine-red);
+  position: absolute;
+  right: -10%;
+  top: -10%;
+  box-shadow: 5px 5px 2px var(--dark-grey);
+  background-color: var(--ghost-white);
+  border: 3px solid var(--fire-engine-red);
 }

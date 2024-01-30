@@ -6,28 +6,28 @@ import TableRota from '../components/Rota/TableRota';
 import '../styles/Rota.css';
 import team from '../data/team';
 
-const CurrentWeek = new Week(new Date());
+const CurrentWeek = new Week();
 
 // *Add shifts for each team member on each day
 for (const teamMember of team) {
-	for (const day of CurrentWeek.days) {
-		const startTime = '07:00';
-		const endTime = '16:00';
-		day.addShift(teamMember, startTime, endTime);
-	}
+  for (const day of CurrentWeek.days) {
+    const startTime = '07:00';
+    const endTime = '16:00';
+    day.addShift(teamMember, startTime, endTime);
+  }
 }
 
 function Rota() {
-	const [isEditModalOpen, setEditModalOpen] = useState(false);
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
 
-	return (
-		<>
-			<ModalContext.Provider value={{ isEditModalOpen, setEditModalOpen }}>
-				<TableRota selectedWeek={CurrentWeek} />
-				<EditShiftModal />
-			</ModalContext.Provider>
-		</>
-	);
+  return (
+    <>
+      <ModalContext.Provider value={{ isEditModalOpen, setEditModalOpen }}>
+        <TableRota selectedWeek={CurrentWeek} />
+        <EditShiftModal />
+      </ModalContext.Provider>
+    </>
+  );
 }
 // *The method need to be called upon initialisation to be able to have a first calculation
 CurrentWeek.calculateHoursOfWeek();

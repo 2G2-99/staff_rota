@@ -14,10 +14,10 @@ const formattedTime = formattedHour.concat(':', formattedMinute);
 const currentShift = formattedHour < '16' ? 'Opening' : 'Closing';
 
 export {
-	formattedDate,
-	formattedYear,
-	formattedQuarter,
-	formattedWeek,
-	formattedTime,
-	currentShift,
+  formattedDate,
+  formattedYear,
+  formattedQuarter,
+  formattedWeek,
+  formattedTime,
+  currentShift,
 };
