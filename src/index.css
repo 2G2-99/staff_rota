@@ -1,51 +1,51 @@
 :root,
 html {
-	/* COLORS */
-	--dark-grey: #252627;
-	--fire-brick: #af2025;
-	--fire-engine-red: #c92027;
-	--ghost-white: #fafaff;
-	--night: #141115;
-	--platinum: #daddd8;
-	--teal: #177e89;
-	--asparagus: #60993e;
+  /* COLORS */
+  --dark-grey: #252627;
+  --fire-brick: #af2025;
+  --fire-engine-red: #c92027;
+  --ghost-white: #fafaff;
+  --night: #141115;
+  --platinum: #daddd8;
+  --teal: #177e89;
+  --asparagus: #60993e;
 
-	/* FONTS */
-	--text-base: 16px;
-	--xs-text: 0.5rem;
-	--sm-text: 0.75rem;
-	--md-text: 1.25rem;
-	--lg-text: 1.5rem;
-	--xl-text: 2rem;
-	--2xl-text: 2.5rem;
-	--3xl-text: 3rem;
+  /* FONTS */
+  --text-base: 16px;
+  --xs-text: 0.5rem;
+  --sm-text: 0.75rem;
+  --md-text: 1.25rem;
+  --lg-text: 1.5rem;
+  --xl-text: 2rem;
+  --2xl-text: 2.5rem;
+  --3xl-text: 3rem;
 
-	/* SIZES */
-	--2xs-size: 16rem;
-	--xs-size: 20rem;
-	--sm-size: 24rem;
-	--md-size: 28rem;
-	--lg-size: 32rem;
-	--xl-size: 36rem;
-	--2xl-size: 42rem;
-	--3xl-size: 48rem;
-	--4xl-size: 56rem;
-	--5xl-size: 64rem;
-	--6xl-size: 72rem;
-	--7xl-size: 80rem;
-	--8xl-size: 90rem;
-	--full-size: 100%;
+  /* SIZES */
+  --2xs-size: 16rem;
+  --xs-size: 20rem;
+  --sm-size: 24rem;
+  --md-size: 28rem;
+  --lg-size: 32rem;
+  --xl-size: 36rem;
+  --2xl-size: 42rem;
+  --3xl-size: 48rem;
+  --4xl-size: 56rem;
+  --5xl-size: 64rem;
+  --6xl-size: 72rem;
+  --7xl-size: 80rem;
+  --8xl-size: 90rem;
+  --full-size: 100%;
 
-	/* CONTAINER WIDTH */
-	--sm-w: 360px;
-	--md-w: 481px;
-	--lg-w: 769px;
-	--xl-w: 1024px;
+  /* CONTAINER WIDTH */
+  --sm-w: 360px;
+  --md-w: 481px;
+  --lg-w: 769px;
+  --xl-w: 1024px;
 
-	color: var(--night);
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	font-size: var(--text-base);
-	line-height: 1.4;
+  color: var(--night);
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: var(--text-base);
+  line-height: 1.4;
 }
 
 /* CSS rules for mobile devices */
