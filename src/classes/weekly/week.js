@@ -3,9 +3,12 @@ import Day from './day';
 
 const DAYS_IN_WEEK = 7;
 
+/**
+ * @param weeksToAdvance is the given number of weeks to advance from the current date.
+ */
 class Week {
-	constructor(date = new Date(), weeksToAdvance = 0) {
-		this.date = date;
+	constructor(weeksToAdvance = 0) {
+		this.date = new Date();
 		this.weeksToAdvance = weeksToAdvance;
 		this.startOn = this.getAdvancedWeekStart();
 		this.days = this.addDaysToWeek();
@@ -19,6 +22,10 @@ class Week {
 		} else {
 			return startOfWeek(this.date, { weekStartsOn: 1 });
 		}
+	}
+
+	getFormattedStartOn() {
+		return format(this.startOn, 'dd/MM/yyyy');
 	}
 
 	addDaysToWeek() {

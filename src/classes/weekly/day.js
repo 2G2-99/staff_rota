@@ -1,6 +1,10 @@
 import { format, parse } from 'date-fns';
 import Shift from './shift';
 
+/**
+ * @param dateString date passed must be as a parsed string in a format "dd/MM/yy".
+ * @param shifts is by default an empty Map if not shifts data is initially entered. Each shift must be an item with a **Key**: *TeamMember* and **value**: *Shift*
+ */
 class Day {
 	constructor(dateString, shifts = new Map()) {
 		this.date = this.formatDateString(dateString);
