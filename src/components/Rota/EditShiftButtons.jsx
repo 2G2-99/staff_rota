@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import Button from '../Button';
 import DeleteIcon from '../Icons/DeleteIcon';
 import EditIcon from '../Icons/EditIcon';
-import { ModalContext } from '../Modal/ModalContext';
+import { ModalContext } from '../../context/ModalContext';
 
 import table from '../../styles/Table.module.css';
 import button from '../../styles/Button.module.css';
