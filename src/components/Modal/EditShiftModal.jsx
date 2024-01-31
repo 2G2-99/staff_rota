@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import Button from '../Button';
 import Modal from './Modal';
-import { ModalContext } from './ModalContext';
+import { ModalContext } from '../../context/ModalContext';
 import button from '../../styles/Button.module.css';
 import modal from '../../styles/Modal.module.css';
 
