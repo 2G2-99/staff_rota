@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Week from '../classes/weekly/week';
 import EditShiftModal from '../components/Modal/EditShiftModal';
 import TableRota from '../components/Rota/TableRota';
@@ -23,23 +22,11 @@ for (const teamMember of team) {
  * @returns {React.JSX.Element} Main component that brings together all other sub-components to make the Rota Table and its functionalities
  */
 function Rota() {
-  const [currentShiftTimes, setCurrentShiftTimes] = useState({
-    startTime: 'HH:MM',
-    endTime: 'HH:MM',
-  });
-
-  const handleShiftClick = (startTime, endTime) => {
-    setCurrentShiftTimes({ startTime, endTime });
-  };
-
   return (
     <ModalProvider>
       <ShiftsProvider>
-        <TableRota selectedWeek={CurrentWeek} onShiftClick={handleShiftClick} />
-        <EditShiftModal
-          startTime={currentShiftTimes.startTime}
-          endTime={currentShiftTimes.endTime}
-        />
+        <TableRota selectedWeek={CurrentWeek} />
+        <EditShiftModal />
       </ShiftsProvider>
     </ModalProvider>
   );

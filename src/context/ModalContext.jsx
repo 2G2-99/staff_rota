@@ -4,13 +4,26 @@ export const ModalContext = createContext(false);
 
 export const ModalProvider = ({ children }) => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [currentShiftTimes, setCurrentShiftTimes] = useState({
+    startTime: '00:00', // Default start time
+    endTime: '00:00', // Default end time
+  });
 
   /**
    *
    * @param {object} teamMember Selected team member from whom add or update a shift
    * @param {object} day Selected day of the week from which add or update a shift
    */
-  const editShift = (teamMember, day) => {
+  const editShift = (startTime = '00:00', endTime = '00:00') => {
+    if (startTime && endTime) {
+      setCurrentShiftTimes({
+        startTime,
+        endTime,
+      });
+    }
+
+    console.log(startTime, endTime);
+
     setModalOpen(true);
   };
 
@@ -40,7 +53,14 @@ export const ModalProvider = ({ children }) => {
 
   return (
     <ModalContext.Provider
-      value={{ isModalOpen, editShift, deleteShift, closeModal }}
+      value={{
+        isModalOpen,
+        currentShiftTimes,
+        setCurrentShiftTimes,
+        editShift,
+        deleteShift,
+        closeModal,
+      }}
     >
       {children}
     </ModalContext.Provider>
