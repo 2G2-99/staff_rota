@@ -5,7 +5,7 @@ import EditShiftButtons from './EditShiftButtons';
 
 function TeamRows({ team, currentWeek }) {
   return team.map(teamMember => (
-    <tr key={teamMember.capitalisedName()} className={table.row}>
+    <tr key={teamMember.listBy('last')} className={table.row}>
       <TeamMemberCell teamMember={teamMember} />
       <ShiftCell teamMember={teamMember} currentWeek={currentWeek} />
     </tr>
@@ -13,7 +13,7 @@ function TeamRows({ team, currentWeek }) {
 }
 
 function TeamMemberCell({ teamMember }) {
-  return <th className={table.name}>{teamMember.capitalisedName()}</th>;
+  return <th className={table.name}>{teamMember.listBy('first')}</th>;
 }
 
 function ShiftCell({ teamMember, currentWeek }) {
