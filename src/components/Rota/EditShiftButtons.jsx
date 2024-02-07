@@ -7,11 +7,16 @@ import { ModalContext } from '../../context/ModalContext';
 import table from '../../styles/Table.module.css';
 import button from '../../styles/Button.module.css';
 
-function EditShiftButtons({ teamMember, day, onDeleteShift }) {
-  const { setEditModalOpen } = useContext(ModalContext);
+function EditShiftButtons({ teamMember, day }) {
+  const { editShift, deleteShift } = useContext(ModalContext);
 
-  const handleEdit = () => setEditModalOpen(true);
-  const handleDelete = () => onDeleteShift(teamMember, day);
+  const handleEdit = () => {
+    editShift(teamMember, day);
+  };
+
+  const handleDelete = () => {
+    deleteShift(teamMember, day);
+  };
 
   return (
     <div
