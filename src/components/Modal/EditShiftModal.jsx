@@ -6,12 +6,10 @@ import button from '../../styles/Button.module.css';
 import modal from '../../styles/Modal.module.css';
 
 function EditShiftModal({ startTime, endTime }) {
-  const { isEditModalOpen, setEditModalOpen } = useContext(ModalContext);
-
-  const handleCloseModal = () => setEditModalOpen(false);
+  const { isModalOpen } = useContext(ModalContext);
 
   return (
-    <Modal isOpen={isEditModalOpen} hasCloseBtn onClose={handleCloseModal}>
+    <Modal isOpen={isModalOpen} hasCloseBtn onClose>
       <div className={modal.header}>
         <h2>Edit Shift</h2>
       </div>

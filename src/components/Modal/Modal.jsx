@@ -1,18 +1,18 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useRef } from 'react';
 import Button from '../Button';
 import CrossIcon from '../Icons/CrossIcon';
 
 import modal from '../../styles/modal.module.css';
 import button from '../../styles/Button.module.css';
+import { ModalContext } from '../../context/ModalContext';
 
 function Modal({ isOpen, hasCloseBtn, onClose, children }) {
   const modalRef = useRef(null);
+  const { closeModal } = useContext(ModalContext);
 
   const handleCloseModal = () => {
-    if (onClose) {
-      onClose();
-    }
+    if (onClose) closeModal();
   };
 
   const handleESCKey = e => {

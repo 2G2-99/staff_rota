@@ -1,27 +1,13 @@
 import table from '../../styles/Table.module.css';
 import EditShiftButtons from './EditShiftButtons';
 
-function TeamRows({ team, currentWeek }) {
-  const handleDeleteShift = (teamMember, day) => {
-    if (day.shifts.has(teamMember)) {
-      try {
-        day.removeShift(teamMember);
-      } catch (error) {
-        console.error(error);
-      }
-    } else {
-      console.log('No shifts to remove for team member:', teamMember);
-    }
-  };
+// TODO: Re-think the way the shifts are accessed
 
+function TeamRows({ team, currentWeek }) {
   return team.map(teamMember => (
     <tr key={teamMember.capitalisedName()} className={table.row}>
       <TeamMemberCell teamMember={teamMember} />
-      <ShiftCell
-        teamMember={teamMember}
-        currentWeek={currentWeek}
-        onDeleteShift={handleDeleteShift}
-      />
+      <ShiftCell teamMember={teamMember} currentWeek={currentWeek} />
     </tr>
   ));
 }
@@ -30,26 +16,17 @@ function TeamMemberCell({ teamMember }) {
   return <th className={table.name}>{teamMember.capitalisedName()}</th>;
 }
 
-function ShiftCell({ currentWeek, teamMember, onDeleteShift }) {
+function ShiftCell({ teamMember, currentWeek }) {
   return currentWeek.days.map(day => (
-    <DayData
-      key={day.dayName}
-      day={day}
-      teamMember={teamMember}
-      onDeleteShift={onDeleteShift}
-    />
+    <DayData key={day.dayName} teamMember={teamMember} day={day} />
   ));
 }
 
-function DayData({ day, teamMember, onDeleteShift }) {
+function DayData({ teamMember, day }) {
   return (
     <td className={table.shift}>
-      <ShiftData day={day} teamMember={teamMember} />
-      <EditShiftButtons
-        teamMember={teamMember}
-        day={day}
-        onDeleteShift={onDeleteShift}
-      />
+      <ShiftData teamMember={teamMember} day={day} />
+      <EditShiftButtons teamMember={teamMember} day={day} />
     </td>
   );
 }
