@@ -17,14 +17,22 @@ class TeamMember {
   }
 
   capitalisedName() {
-    this.firstName =
-      this.firstName.charAt(0).toUpperCase() +
-      this.firstName.slice(1).toLowerCase();
-    this.lastName =
-      this.lastName.charAt(0).toUpperCase() +
-      this.lastName.slice(1).toLowerCase();
+    const formatString = str =>
+      str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 
-    return this.lastName.concat(', ', this.firstName);
+    return formatString(this.firstName);
+  }
+
+  listBy(order = 'last') {
+    const formatString = str =>
+      str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+
+    this.firstName = formatString(this.firstName);
+    this.lastName = formatString(this.lastName);
+
+    return order === 'first'
+      ? `${this.firstName}, ${this.lastName}`
+      : `${this.lastName}, ${this.firstName}`;
   }
 
   calculateAge() {

@@ -44,13 +44,13 @@ class Day {
   }
 
   removeShift(teamMember) {
-    if (this.shifts.has(teamMember)) {
-      this.shifts.delete(teamMember);
-      console.log('Removed shift for team member:', teamMember);
-      this.calculateHoursOfDay();
-    } else {
+    if (!this.shifts.has(teamMember)) {
       throw new Error('Given team member does not exist');
     }
+
+    this.shifts.delete(teamMember);
+    console.log(`Shift for ${teamMember.capitalisedName()} has been removed`);
+    this.calculateHoursOfDay();
   }
 
   peopleOnShift() {
