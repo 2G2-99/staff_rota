@@ -8,6 +8,8 @@ export const ShiftsContext = createContext(new Map());
  *
  */
 export const ShiftsProvider = ({ children }) => {
+  // ? Confirm uses of ShiftsContext and conect it to the Rota
+
   const [shifts, setShifts] = useState(new Map());
 
   const addShift = (dayInstance, teamMember, shift) => {

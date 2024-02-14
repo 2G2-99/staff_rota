@@ -31,13 +31,21 @@ function EditShiftModal() {
     });
   };
 
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log(event);
+  };
+
   return (
     <Modal isOpen={isModalOpen} hasCloseBtn onClose>
       <div className={modal.header}>
         <h2>Edit Shift</h2>
       </div>
       <div className={modal.body}>
-        <form className={`${modal.edit} ${modal.shift}`}>
+        <form
+          className={`${modal.edit} ${modal.shift}`}
+          onSubmit={handleSubmit}
+        >
           <label className={modal.label}>Select a start time:</label>
           <input
             className={modal.input}
@@ -47,6 +55,7 @@ function EditShiftModal() {
             min={'07:00'}
             value={currentShiftTimes.startTime || '00:00'}
             onChange={handleStartTimeChange}
+            ref={startTimeInputRef}
             required
           />
           <label className={modal.label}>Select an end time:</label>

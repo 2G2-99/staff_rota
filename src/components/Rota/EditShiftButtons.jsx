@@ -17,10 +17,10 @@ function EditShiftButtons({ teamMember, day }) {
       const startTime = shift.startTime;
       const endTime = shift.endTime;
 
-      editShift(startTime, endTime);
+      editShift(teamMember, shift, startTime, endTime);
       return;
     }
-    editShift();
+    editShift(teamMember);
   };
 
   const handleDelete = () => {

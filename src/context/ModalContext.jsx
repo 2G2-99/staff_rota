@@ -10,18 +10,27 @@ export const ModalProvider = ({ children }) => {
   });
 
   /**
-   *
    * @param {object} teamMember Selected team member from whom add or update a shift
-   * @param {object} day Selected day of the week from which add or update a shift
+   * @param {object} shift Selected shift from the team member to which add or update startTime and endTime
+   * @param {string} startTime Time input of start of shift
+   * @param {string} endTime Time input of end of shift
    */
-  const editShift = (startTime = '00:00', endTime = '00:00') => {
-    if (startTime && endTime) {
+  const editShift = (
+    teamMember,
+    shift,
+    startTime = '00:00',
+    endTime = '00:00',
+  ) => {
+    if (shift) {
       setCurrentShiftTimes({
         startTime,
         endTime,
       });
+    } else {
+      shift = null;
     }
 
+    console.log(shift);
     console.log(startTime, endTime);
 
     setModalOpen(true);
@@ -34,11 +43,7 @@ export const ModalProvider = ({ children }) => {
    */
   const deleteShift = (teamMember, day) => {
     if (day.shifts.has(teamMember)) {
-      try {
-        day.removeShift(teamMember);
-      } catch (error) {
-        console.error(error);
-      }
+      day.removeShift(teamMember);
     } else {
       alert(
         `No shifts to remove for ${teamMember.capitalisedName()}:`,

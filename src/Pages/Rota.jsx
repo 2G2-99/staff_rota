@@ -23,12 +23,12 @@ for (const teamMember of team) {
  */
 function Rota() {
   return (
-    <ModalProvider>
-      <ShiftsProvider>
+    <ShiftsProvider>
+      <ModalProvider>
         <TableRota selectedWeek={CurrentWeek} />
         <EditShiftModal />
-      </ShiftsProvider>
-    </ModalProvider>
+      </ModalProvider>
+    </ShiftsProvider>
   );
 }
 // *The method need to be called upon initialisation to be able to have a first calculation
