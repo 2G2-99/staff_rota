@@ -6,87 +6,86 @@ import button from '../../styles/Button.module.css';
 import modal from '../../styles/Modal.module.css';
 
 function EditShiftModal() {
-  const { isModalOpen, currentShiftTimes, setCurrentShiftTimes } =
-    useContext(ModalContext);
-  const startTimeInputRef = useRef(null);
+	const { isModalOpen, currentShiftTimes, setCurrentShiftTimes } =
+		useContext(ModalContext);
+	const startTimeInputRef = useRef(null);
 
-  useEffect(() => {
-    //Focus on start time input
-    if (isModalOpen && startTimeInputRef.current) {
-      startTimeInputRef.current.focus();
-    }
-  }, [isModalOpen]);
+	useEffect(() => {
+		//Focus on start time input
+		if (isModalOpen && startTimeInputRef.current) {
+			startTimeInputRef.current.focus();
+		}
+	}, [isModalOpen]);
 
-  const handleStartTimeChange = event => {
-    setCurrentShiftTimes({
-      ...currentShiftTimes,
-      startTime: event.target.value,
-    });
-  };
+	const handleStartTimeChange = event => {
+		setCurrentShiftTimes({
+			...currentShiftTimes,
+			startTime: event.target.value,
+		});
+	};
 
-  const handleEndTimeChange = event => {
-    setCurrentShiftTimes({
-      ...currentShiftTimes,
-      endTime: event.target.value,
-    });
-  };
+	const handleEndTimeChange = event => {
+		setCurrentShiftTimes({
+			...currentShiftTimes,
+			endTime: event.target.value,
+		});
+	};
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    console.log(event);
-  };
+	const handleSubmit = event => {
+		event.preventDefault();
+		console.log(event);
+	};
 
-  return (
-    <Modal isOpen={isModalOpen} hasCloseBtn onClose>
-      <div className={modal.header}>
-        <h2>Edit Shift</h2>
-      </div>
-      <div className={modal.body}>
-        <form
-          className={`${modal.edit} ${modal.shift}`}
-          onSubmit={handleSubmit}
-        >
-          <label className={modal.label}>Select a start time:</label>
-          <input
-            className={modal.input}
-            type='time'
-            id='start'
-            name='start'
-            min={'07:00'}
-            value={currentShiftTimes.startTime || '00:00'}
-            onChange={handleStartTimeChange}
-            ref={startTimeInputRef}
-            required
-          />
-          <label className={modal.label}>Select an end time:</label>
-          <input
-            className={modal.input}
-            type='time'
-            id='end'
-            name='end'
-            max={'00:30'}
-            value={currentShiftTimes.endTime || '00:00'}
-            onChange={handleEndTimeChange}
-            required
-          />
-        </form>
-      </div>
-      <div className={modal.footer}>
-        <div className={`${button.group} ${button.gap}`}>
-          <Button
-            className={`${button.accept} ${button.action}`}
-            form='edit-shift'
-            type='submit'
-          >
-            Accept
-          </Button>
-          <Button className={`${button.cancel} ${button.action}`}>
-            Cancel
-          </Button>
-        </div>
-      </div>
-    </Modal>
-  );
+	return (
+		<Modal isOpen={isModalOpen} hasCloseBtn onClose>
+			<form className={`${modal.edit} ${modal.shift}`} onSubmit={handleSubmit}>
+				<div className={modal.header}>
+					<h2>Edit Shift</h2>
+				</div>
+
+				<div className={modal.body}>
+					<label className={modal.label}>Select a start time:</label>
+					<input
+						className={modal.input}
+						type='time'
+						id='start'
+						name='start'
+						min={'07:00'}
+						value={currentShiftTimes.startTime || '00:00'}
+						onChange={handleStartTimeChange}
+						ref={startTimeInputRef}
+						required
+					/>
+					<label className={modal.label}>Select an end time:</label>
+					<input
+						className={modal.input}
+						type='time'
+						id='end'
+						name='end'
+						max={'00:30'}
+						value={currentShiftTimes.endTime || '00:00'}
+						onChange={handleEndTimeChange}
+						required
+					/>
+				</div>
+
+				<div className={modal.footer}>
+					<div className={`${button.group} ${button.gap}`}>
+						<Button
+							className={`${button.accept} ${button.action}`}
+							form='edit-shift'
+							type='submit'
+						>
+							Accept
+						</Button>
+						<Button className={`${button.cancel} ${button.action}`}>
+							Cancel
+						</Button>
+					</div>
+				</div>
+			</form>
+		</Modal>
+	);
 }
 
 export default EditShiftModal;
