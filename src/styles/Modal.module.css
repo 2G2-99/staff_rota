@@ -1,65 +1,66 @@
 .layout {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  overflow: visible;
-  border-radius: 0.5em;
-  box-shadow: 8px 8px 4px var(--dark-grey);
-  min-width: var(--xs-w);
-  border: none;
+	border-radius: 0.5em;
+	border: none;
+	box-shadow: 8px 8px 4px var(--dark-grey);
+	left: 50%;
+	max-height: 90%;
+	overflow: visible;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
 
-  &::backdrop {
-    background: hsl(0 0% 0% / 30%);
-  }
+	&::backdrop {
+		background: hsl(0 0% 0% / 30%);
+	}
 
-  .header {
-    text-align: left;
-    border-bottom: 3px solid var(--fire-engine-red);
-    padding: 1em;
-  }
+	.header {
+		border-bottom: 3px solid var(--fire-engine-red);
+		padding: 1em;
+		text-align: left;
+	}
 
-  .body {
-    padding: 0 2em;
-    margin: 1em 0;
-    display: grid;
-  }
+	.body {
+		display: grid;
+		margin: 1em 0;
+		padding: 0 2em;
+	}
 
-  .footer {
-    background-color: var(--platinum);
-    padding: 1em;
-  }
+	.footer {
+		background-color: var(--platinum);
+		border-bottom-left-radius: 0.5em;
+		border-bottom-right-radius: 0.5em;
+		padding: 1em;
+	}
 }
 
 .shift {
-  display: grid;
+	align-items: center;
+	border: none;
+	display: grid;
+	gap: 0.5em;
 
-  &.edit {
-    label {
-      font-size: var(--sm-text);
-      font-weight: bold;
-    }
+	&.edit {
+		.label {
+			font-size: var(--sm-text);
+			font-weight: bold;
 
-    label:nth-of-type(even) {
-      margin-top: 1.5em;
-    }
+			.input {
+				background-color: var(--platinum);
+				border-bottom: 3px solid var(--fire-engine-red);
+				border-radius: 3px;
+				border: none;
+				font-size: var(--md-text);
+				padding: 0.25em;
+				width: 100%;
 
-    input {
-      background-color: var(--platinum);
-      border: none;
-      border-bottom: 3px solid var(--fire-engine-red);
-      border-radius: 3px;
-      font-size: var(--md-text);
-      padding: 0.25em;
-      width: 100%;
-
-      &:focus {
-        color: var(--ghost-white);
-        background-color: var(--fire-engine-red);
-        border-bottom: 2px solid var(--fire-engine-red);
-        outline-color: var(--ghost-white);
-        box-shadow: none;
-      }
-    }
-  }
+				&:focus {
+					background-color: var(--fire-engine-red);
+					border-bottom: 2px solid var(--fire-engine-red);
+					box-shadow: none;
+					color: var(--ghost-white);
+					outline-color: var(--ghost-white);
+				}
+			}
+		}
+	}
 }
