@@ -8,37 +8,39 @@ export const ShiftsContext = createContext(new Map());
  *
  */
 export const ShiftsProvider = ({ children }) => {
-  const [shifts, setShifts] = useState(new Map());
+	// ? Confirm uses of ShiftsContext and connect it to the Rota
 
-  const addShift = (dayInstance, teamMember, shift) => {
-    dayInstance.addShift(teamMember, shift);
-    setShifts(
-      prevShifts =>
-        new Map(prevShifts.set(dayInstance.date, dayInstance.shifts)),
-    );
-  };
+	const [shifts, setShifts] = useState(new Map());
 
-  const removeShift = (dayInstance, teamMember) => {
-    dayInstance.removeShift(teamMember);
-    setShifts(
-      prevShifts =>
-        new Map(prevShifts.set(dayInstance.date, dayInstance.shifts)),
-    );
-  };
+	const addShift = (dayInstance, teamMember, shift) => {
+		dayInstance.addShift(teamMember, shift);
+		setShifts(
+			prevShifts =>
+				new Map(prevShifts.set(dayInstance.date, dayInstance.shifts))
+		);
+	};
 
-  const updateShift = (dayInstance, teamMember, updatedShift) => {
-    dayInstance.modifyShift(teamMember, updatedShift);
-    setShifts(
-      prevShifts =>
-        new Map(prevShifts.set(dayInstance.date, dayInstance.shifts)),
-    );
-  };
+	const removeShift = (dayInstance, teamMember) => {
+		dayInstance.removeShift(teamMember);
+		setShifts(
+			prevShifts =>
+				new Map(prevShifts.set(dayInstance.date, dayInstance.shifts))
+		);
+	};
 
-  return (
-    <ShiftsContext.Provider
-      value={{ shifts, addShift, removeShift, updateShift }}
-    >
-      {children}
-    </ShiftsContext.Provider>
-  );
+	const updateShift = (dayInstance, teamMember, updatedShift) => {
+		dayInstance.modifyShift(teamMember, updatedShift);
+		setShifts(
+			prevShifts =>
+				new Map(prevShifts.set(dayInstance.date, dayInstance.shifts))
+		);
+	};
+
+	return (
+		<ShiftsContext.Provider
+			value={{ shifts, addShift, removeShift, updateShift }}
+		>
+			{children}
+		</ShiftsContext.Provider>
+	);
 };

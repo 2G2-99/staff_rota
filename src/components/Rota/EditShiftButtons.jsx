@@ -11,7 +11,16 @@ function EditShiftButtons({ teamMember, day }) {
   const { editShift, deleteShift } = useContext(ModalContext);
 
   const handleEdit = () => {
-    editShift(teamMember, day);
+    if (day.shifts.has(teamMember)) {
+      const shift = day.shifts.get(teamMember);
+
+      const startTime = shift.startTime;
+      const endTime = shift.endTime;
+
+      editShift(teamMember, shift, startTime, endTime);
+      return;
+    }
+    editShift(teamMember);
   };
 
   const handleDelete = () => {

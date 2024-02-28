@@ -1,8 +1,6 @@
 import table from '../../styles/Table.module.css';
 import EditShiftButtons from './EditShiftButtons';
 
-// TODO: Re-think the way the shifts are accessed
-
 function TeamRows({ team, currentWeek }) {
   return team.map(teamMember => (
     <tr key={teamMember.listBy('last')} className={table.row}>
