@@ -16,7 +16,7 @@ export const ShiftsProvider = ({ children }) => {
     dayInstance.addShift(teamMember, shift);
     setShifts(
       prevShifts =>
-        new Map(prevShifts.set(dayInstance.date, dayInstance.shifts)),
+        new Map(prevShifts.set(dayInstance.date, dayInstance.shifts))
     );
   };
 
@@ -24,7 +24,7 @@ export const ShiftsProvider = ({ children }) => {
     dayInstance.removeShift(teamMember);
     setShifts(
       prevShifts =>
-        new Map(prevShifts.set(dayInstance.date, dayInstance.shifts)),
+        new Map(prevShifts.set(dayInstance.date, dayInstance.shifts))
     );
   };
 
@@ -32,7 +32,7 @@ export const ShiftsProvider = ({ children }) => {
     dayInstance.modifyShift(teamMember, updatedShift);
     setShifts(
       prevShifts =>
-        new Map(prevShifts.set(dayInstance.date, dayInstance.shifts)),
+        new Map(prevShifts.set(dayInstance.date, dayInstance.shifts))
     );
   };
 
