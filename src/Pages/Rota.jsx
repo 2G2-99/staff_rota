@@ -45,7 +45,7 @@ function Rota() {
   return (
     <ShiftsProvider>
       <ModalProvider>
-        <TableRota selectedWeek={currentWeek} />
+        <TableRota selectedWeek={currentWeek} loadedTeam={team} />
         <EditShiftModal />
       </ModalProvider>
     </ShiftsProvider>

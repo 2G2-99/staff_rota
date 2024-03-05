@@ -4,8 +4,8 @@ export const ShiftsContext = createContext(new Map());
 
 /**
  *
- * @param {React.JSX.Element} children A single or multiple components that will have access to the Shifts context
- *
+ * @param {React.JSX.Element} children A single or multiple components that will have access to the Shifts context.
+ * @returns {React.JSX.Element} Children components wrapped with "ShiftsContext.Provider" to access the context.
  */
 export const ShiftsProvider = ({ children }) => {
   // ? Confirm uses of ShiftsContext and connect it to the Rota
