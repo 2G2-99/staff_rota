@@ -1,46 +1,16 @@
-import { memo, useContext, useEffect, useRef } from 'react';
-import { ModalContext } from '../../context/ModalContext';
 import Button from '../Button';
 import Modal from './Modal';
 import button from '../../styles/Button.module.css';
 import modal from '../../styles/Modal.module.css';
 
-const EditShiftModal = memo(function EditShiftModal() {
-  const { isModalOpen, closeModal, currentShiftTimes, setCurrentShiftTimes } =
-    useContext(ModalContext);
-
-  const startTimeInputRef = useRef(null);
-
-  useEffect(() => {
-    //Focus on start time input
-    if (isModalOpen && startTimeInputRef.current) {
-      startTimeInputRef.current.focus();
-    }
-  }, [isModalOpen]);
-
-  const handleStartTimeChange = ({ target: { value } }) => {
-    setCurrentShiftTimes({
-      ...currentShiftTimes,
-      startTime: value,
-    });
-  };
-
-  const handleEndTimeChange = ({ target: { value } }) => {
-    setCurrentShiftTimes({
-      ...currentShiftTimes,
-      endTime: value,
-    });
-  };
-
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    closeModal();
+function EditShiftModal() {
+  const handleTimeChange = ({ target: { value } }) => {
+    return value;
   };
 
   return (
-    <Modal isOpen={isModalOpen} hasCloseBtn onClose>
-      <form onSubmit={handleSubmit}>
+    <Modal isOpen={true} hasCloseBtn onClose>
+      <form>
         <section id='modal-title' className={modal.header}>
           <h2>Edit Shift</h2>
         </section>
@@ -48,16 +18,14 @@ const EditShiftModal = memo(function EditShiftModal() {
           <fieldset className={`${modal.shift} ${modal.edit}`}>
             <TimeInput
               label='Select a start time:'
-              value={currentShiftTimes.startTime}
-              onChange={handleStartTimeChange}
+              onChange={handleTimeChange}
               required
               id='start'
               name='start'
             />
             <TimeInput
               label='Select an end time:'
-              value={currentShiftTimes.endTime}
-              onChange={handleEndTimeChange}
+              onChange={handleTimeChange}
               required
               id='end'
               name='end'
@@ -81,7 +49,7 @@ const EditShiftModal = memo(function EditShiftModal() {
       </form>
     </Modal>
   );
-});
+}
 
 function TimeInput({ label, value, onChange, required, id, name }) {
   return (

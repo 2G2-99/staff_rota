@@ -3,6 +3,7 @@ import TableRota from '../components/Rota/TableRota';
 import '../styles/Rota.css';
 import team from '../data/team';
 import { useEffect, useState } from 'react';
+import EditShiftModal from '../components/Modal/EditShiftModal';
 
 /**
  *
@@ -37,7 +38,12 @@ function Rota() {
     return <div>Loading...</div>;
   }
 
-  return <TableRota selectedWeek={currentWeek} team={team} />;
+  return (
+    <>
+      <TableRota selectedWeek={currentWeek} team={team} />
+      <EditShiftModal />
+    </>
+  );
 }
 
 export default Rota;

@@ -1,17 +1,29 @@
-import { useContext, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRef } from 'react';
 import Button from '../Button';
 import CrossIcon from '../Icons/CrossIcon';
 import modal from '../../styles/Modal.module.css';
 import button from '../../styles/Button.module.css';
-import { ModalContext } from '../../context/ModalContext';
 
 function Modal({ isOpen, hasCloseBtn, onClose, children }) {
+  const [isModalOpen, setIsModalOpen] = useState(isOpen);
   const modalRef = useRef(null);
-  const { closeModal } = useContext(ModalContext);
+
+  useEffect(() => {
+    const modalElement = modalRef.current;
+    if (modalElement) {
+      if (isModalOpen) {
+        modalElement.showModal();
+      } else {
+        modalElement.close();
+      }
+    }
+  }, [isModalOpen, modalRef]);
 
   const handleCloseModal = () => {
-    if (onClose) closeModal();
+    if (onClose) {
+      setIsModalOpen(false);
+    }
   };
 
   const handleESCKey = e => {
@@ -19,17 +31,6 @@ function Modal({ isOpen, hasCloseBtn, onClose, children }) {
       handleCloseModal();
     }
   };
-
-  useEffect(() => {
-    const modalElement = modalRef.current;
-    if (modalElement) {
-      if (isOpen) {
-        modalElement.showModal();
-      } else {
-        modalElement.close();
-      }
-    }
-  }, [isOpen, modalRef]);
 
   return (
     <dialog ref={modalRef} className={modal.layout} onKeyDown={handleESCKey}>
