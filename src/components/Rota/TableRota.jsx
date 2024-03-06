@@ -6,11 +6,11 @@ import HoursRow from './HoursRow';
 
 /**
  *
- * @param {object} loadedTeam Selected team from the data base to access and display its data.
+ * @param {object} team Selected team from the data base to access and display its data.
  * @param {object} selectedWeek Selected Week instance to access and display its data.
  * @returns {React.JSX.Element} A component created with various sub-components to be able to present as a table in the UI.
  */
-function TableRota({ loadedTeam, selectedWeek }) {
+function TableRota({ team, selectedWeek }) {
   return (
     <div className='table-container feature'>
       <table className={table.layout}>
@@ -30,7 +30,7 @@ function TableRota({ loadedTeam, selectedWeek }) {
         </thead>
 
         <tbody className={table.body}>
-          <TeamRows team={loadedTeam} currentWeek={selectedWeek} />
+          <TeamRows team={team} currentWeek={selectedWeek} />
         </tbody>
 
         <tfoot className={table.footer}>
