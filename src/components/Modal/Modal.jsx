@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { useRef } from 'react';
 import Button from '../Button';
 import CrossIcon from '../Icons/CrossIcon';
 import modal from '../../styles/Modal.module.css';
 import button from '../../styles/Button.module.css';
+import { ShiftModalContext } from '../../context/ShiftModalContext';
 
-function Modal({ isOpen, hasCloseBtn, onClose, children }) {
-  const [isModalOpen, setIsModalOpen] = useState(isOpen);
+function Modal({ hasCloseBtn = false, children }) {
+  const { isModalOpen, handleCloseModal } = useContext(ShiftModalContext);
   const modalRef = useRef(null);
 
   useEffect(() => {
@@ -19,12 +20,6 @@ function Modal({ isOpen, hasCloseBtn, onClose, children }) {
       }
     }
   }, [isModalOpen, modalRef]);
-
-  const handleCloseModal = () => {
-    if (onClose) {
-      setIsModalOpen(false);
-    }
-  };
 
   const handleESCKey = e => {
     if (e.key === 'Escape') {
@@ -39,7 +34,6 @@ function Modal({ isOpen, hasCloseBtn, onClose, children }) {
           className={`${button.close} ${button.action}`}
           onClick={handleCloseModal}
         >
-          {/* isOpen => cross if !isOpen => burger */}
           <CrossIcon width={'2em'} height={'2em'} />
         </Button>
       )}

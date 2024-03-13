@@ -4,6 +4,7 @@ import '../styles/Rota.css';
 import team from '../data/team';
 import { useEffect, useState } from 'react';
 import EditShiftModal from '../components/Modal/EditShiftModal';
+import { ShiftModalProvider } from '../context/ShiftModalContext';
 
 /**
  *
@@ -39,10 +40,10 @@ function Rota() {
   }
 
   return (
-    <>
+    <ShiftModalProvider>
       <TableRota selectedWeek={currentWeek} team={team} />
       <EditShiftModal />
-    </>
+    </ShiftModalProvider>
   );
 }
 
