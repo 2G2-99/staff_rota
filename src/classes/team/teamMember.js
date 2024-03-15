@@ -31,7 +31,7 @@ class TeamMember {
     this.lastName = formatString(this.lastName);
 
     return order === 'first'
-      ? `${this.firstName}, ${this.lastName}`
+      ? `${this.firstName} ${this.lastName}`
       : `${this.lastName}, ${this.firstName}`;
   }
 
@@ -100,7 +100,7 @@ class Manager extends TeamMember {
       console.log('Welcome to the Team Member Modifier');
     } else {
       console.log(
-        'You are not a Manager. You are not allowed to make any modifications',
+        'You are not a Manager. You are not allowed to make any modifications'
       );
     }
   }

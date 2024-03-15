@@ -11,23 +11,32 @@ const initialShiftTimes = {
 };
 
 function EditShiftModal() {
-  const { isModalOpen, handleCloseModal } = useContext(ShiftModalContext);
+  const { isModalOpen, handleCloseModal, modalData } =
+    useContext(ShiftModalContext);
   const [shiftTimes, setShiftTimes] = useState(initialShiftTimes);
 
+  // Reference to the inputs in the DOM
   const startTimeInputRef = useRef(null);
+  const endTimeInputRef = useRef(null);
 
   // Focus on start time input
   useEffect(() => {
     if (isModalOpen && startTimeInputRef.current) {
-      startTimeInputRef.current.focus();
-    }
-  }, [isModalOpen]);
+      setTimeout(() => {
+        startTimeInputRef.current.focus();
 
-  const handleTimeInputChange = event => {
-    const { name, value } = event.target;
-    setShiftTimes(previousShiftData => ({
-      ...previousShiftData,
-      [name]: value,
+        startTimeInputRef.current.value = modalData.shift.startTime;
+        endTimeInputRef.current.value = modalData.shift.endTime;
+      }, 0);
+    }
+  }, [isModalOpen, modalData]);
+
+  const handleTimeChange = (event, timeType) => {
+    const { value } = event.target;
+
+    setShiftTimes(previousShiftTimes => ({
+      ...previousShiftTimes,
+      [timeType]: value,
     }));
   };
 
@@ -51,15 +60,16 @@ function EditShiftModal() {
               refElement={startTimeInputRef}
               label='Select a start time:'
               value={shiftTimes.startTime}
-              onChange={handleTimeInputChange}
+              onChange={event => handleTimeChange(event, 'startTime')}
               required
               id='start'
               name='start'
             />
             <TimeInput
+              refElement={endTimeInputRef}
               label='Select an end time:'
               value={shiftTimes.endTime}
-              onChange={handleTimeInputChange}
+              onChange={event => handleTimeChange(event, 'endTime')}
               required
               id='end'
               name='end'

@@ -3,9 +3,20 @@ import DeleteIcon from '../Icons/DeleteIcon';
 import EditIcon from '../Icons/EditIcon';
 import table from '../../styles/Table.module.css';
 import button from '../../styles/Button.module.css';
+import { useContext } from 'react';
+import { ShiftModalContext } from '../../context/ShiftModalContext';
 
-function EditShiftButtons() {
-  const handleEdit = () => {};
+function EditShiftButtons({ teamMember, day }) {
+  const { handleOpenModal, updateModalData } = useContext(ShiftModalContext);
+
+  const handleEdit = () => {
+    if (day.shifts.has(teamMember)) {
+      const shift = day.shifts.get(teamMember);
+
+      updateModalData(teamMember, shift);
+      handleOpenModal();
+    }
+  };
 
   const handleDelete = () => {};
 
