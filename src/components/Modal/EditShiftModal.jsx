@@ -21,7 +21,7 @@ function EditShiftModal() {
 
   // Focus on start time input
   useEffect(() => {
-    if (isModalOpen && startTimeInputRef.current) {
+    if (isModalOpen) {
       setTimeout(() => {
         startTimeInputRef.current.focus();
 
@@ -30,6 +30,16 @@ function EditShiftModal() {
       }, 0);
     }
   }, [isModalOpen, modalData]);
+
+  // Sync shiftTimes with modalData when modalData changes
+  useEffect(() => {
+    if (modalData.shift) {
+      setShiftTimes({
+        startTime: modalData.shift.startTime,
+        endTime: modalData.shift.endTime,
+      });
+    }
+  }, [modalData]);
 
   const handleTimeChange = (event, timeType) => {
     const { value } = event.target;
