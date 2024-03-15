@@ -11,7 +11,7 @@ const initialShiftTimes = {
 };
 
 function EditShiftModal() {
-  const { isModalOpen, handleCloseModal, modalData } =
+  const { isModalOpen, handleCloseModal, modalData, updateShift } =
     useContext(ShiftModalContext);
   const [shiftTimes, setShiftTimes] = useState(initialShiftTimes);
 
@@ -52,10 +52,9 @@ function EditShiftModal() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    // Logic to update the shift in the current week's data
-    // You'll need to implement the logic to update the shift
-    // based on the shiftTimes state
+    updateShift(shiftTimes);
     setShiftTimes(initialShiftTimes);
+    handleCloseModal();
   };
 
   return (

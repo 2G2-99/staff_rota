@@ -13,17 +13,16 @@ export function ShiftModalProvider({ children }) {
   const updateModalData = (teamMember, shift) =>
     setModalData({ teamMember, shift });
 
-  const editShift = (teamMember, shift) => {
-    if (shift) {
-      updateModalData(teamMember, shift);
-
-      console.log(`Context Data: `);
-      console.log(modalData.teamMember);
-      console.log(modalData.shift.startTime);
-      console.log(modalData.shift.endTime);
-    } else {
-      shift = null;
-    }
+  // Function to update the shift times in modalData
+  const updateShift = newShiftTimes => {
+    setModalData(previousModalData => ({
+      ...previousModalData,
+      shift: {
+        ...previousModalData.shift,
+        startTime: newShiftTimes.startTime,
+        endTime: newShiftTimes.endTime,
+      },
+    }));
   };
 
   return (
@@ -36,7 +35,7 @@ export function ShiftModalProvider({ children }) {
         handleOpenModal,
         handleCloseModal,
         updateModalData,
-        editShift,
+        updateShift,
       }}
     >
       {children}
