@@ -25,8 +25,12 @@ function EditShiftModal() {
       setTimeout(() => {
         startTimeInputRef.current.focus();
 
-        startTimeInputRef.current.value = modalData.shift.startTime;
-        endTimeInputRef.current.value = modalData.shift.endTime;
+        const startTime =
+          modalData.shift?.startTime ?? initialShiftTimes.startTime;
+        const endTime = modalData.shift?.endTime ?? initialShiftTimes.endTime;
+
+        startTimeInputRef.current.value = startTime;
+        endTimeInputRef.current.value = endTime;
       }, 0);
     }
   }, [isModalOpen, modalData]);

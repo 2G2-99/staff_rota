@@ -21,15 +21,15 @@ function Rota() {
 
   useEffect(() => {
     if (currentWeek) {
-      for (const teamMember of team) {
-        for (const day of currentWeek.days) {
-          const startTime = '07:00';
-          const endTime = '16:00';
-          day.addShift(teamMember, startTime, endTime);
-        }
-      }
-      // Calculate hours of the week
-      currentWeek.calculateHoursOfWeek();
+      // for (const teamMember of team) {
+      //   for (const day of currentWeek.days) {
+      //     const startTime = '07:00';
+      //     const endTime = '16:00';
+      //     day.addShift(teamMember, startTime, endTime);
+      //   }
+      // }
+      // // Calculate hours of the week
+      // currentWeek.calculateHoursOfWeek();
       setIsLoading(false); // Shifts have been added and hours calculated
     }
   }, [currentWeek]);

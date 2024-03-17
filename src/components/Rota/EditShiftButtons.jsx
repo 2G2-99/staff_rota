@@ -10,12 +10,10 @@ function EditShiftButtons({ teamMember, day }) {
   const { handleOpenModal, updateModalData } = useContext(ShiftModalContext);
 
   const handleEdit = () => {
-    if (day.shifts.has(teamMember)) {
-      const shift = day.shifts.get(teamMember);
+    const shift = day.shifts.get(teamMember) || null;
 
-      updateModalData(teamMember, shift);
-      handleOpenModal();
-    }
+    updateModalData(teamMember, shift);
+    handleOpenModal();
   };
 
   const handleDelete = () => {};
