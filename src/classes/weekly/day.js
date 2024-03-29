@@ -24,7 +24,7 @@ class Day {
 
     if (this.shifts.has(teamMember)) {
       throw new Error(
-        `Team member ${teamMember} already has a shift on this day.`,
+        `Team member ${teamMember} already has a shift on this day.`
       );
     } else {
       this.shifts.set(teamMember, shift);
@@ -51,6 +51,19 @@ class Day {
     this.shifts.delete(teamMember);
     console.log(`Shift for ${teamMember.capitalisedName()} has been removed`);
     this.calculateHoursOfDay();
+  }
+
+  updateShift(teamMember, newShift) {
+    if (newShift) {
+      this.shifts.set(
+        teamMember,
+        new Shift(this.date, newShift.startTime, newShift.endTime)
+      );
+      this.calculateHoursOfDay();
+    } else {
+      this.shifts.delete(teamMember);
+      this.calculateHoursOfDay();
+    }
   }
 
   peopleOnShift() {
@@ -89,7 +102,7 @@ class Day {
 
     this.hours = shiftsHours.reduce(
       (totalHours, hours) => totalHours + hours,
-      0,
+      0
     );
   }
 }

@@ -1,5 +1,7 @@
+import { useContext, useEffect } from 'react';
 import table from '../../styles/Table.module.css';
 import EditShiftButtons from './EditShiftButtons';
+import { ShiftModalContext } from '../../context/ShiftModalContext';
 
 function TeamRows({ team, currentWeek }) {
   return team.map(teamMember => (
@@ -30,9 +32,15 @@ function DayData({ teamMember, day }) {
 }
 
 function ShiftData({ day, teamMember }) {
-  return (
-    <p className={table.data}>{day.shifts.get(teamMember)?.formatShift()}</p>
-  );
+  const { modalData } = useContext(ShiftModalContext);
+
+  const formattedShift =
+    day.shifts.get(teamMember)?.formatShift() ?? 'No Shift';
+
+  // TODO: Re-render the component with the new shift data after the form is submitted
+  useEffect(() => {}, [modalData]);
+
+  return <p className={table.data}>{formattedShift}</p>;
 }
 
 export default TeamRows;

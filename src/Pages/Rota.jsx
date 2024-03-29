@@ -5,6 +5,7 @@ import team from '../data/team';
 import { useEffect, useState } from 'react';
 import EditShiftModal from '../components/Modal/EditShiftModal';
 import { ShiftModalProvider } from '../context/ShiftModalContext';
+import { WeekProvider } from '../context/WeekContext';
 
 /**
  *
@@ -39,10 +40,12 @@ function Rota() {
   }
 
   return (
-    <ShiftModalProvider>
-      <TableRota selectedWeek={currentWeek} team={team} />
-      <EditShiftModal />
-    </ShiftModalProvider>
+    <WeekProvider>
+      <ShiftModalProvider>
+        <TableRota selectedWeek={currentWeek} team={team} />
+        <EditShiftModal />
+      </ShiftModalProvider>
+    </WeekProvider>
   );
 }
 
