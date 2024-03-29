@@ -15,7 +15,7 @@ function TableRota({ team, selectedWeek }) {
     <div className='table-container feature'>
       <table className={table.layout}>
         <caption
-          data-rota-date={`${selectedWeek.days[0].formattedDate}`}
+          data-rota-week={selectedWeek.weekNumber}
           className={table.title}
         >
           Week Rota: {selectedWeek.getFormattedStartOn()} -{' '}

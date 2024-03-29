@@ -1,7 +1,15 @@
 import { addDays, addWeeks, endOfWeek, format, startOfWeek } from 'date-fns';
 import Day from './day';
 
-const DAYS_IN_WEEK = 7;
+const DAYS_IN_WEEK = [
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday',
+  'sunday',
+];
 
 /**
  * @param weeksToAdvance is the given number of weeks to advance from the current date.
@@ -9,10 +17,15 @@ const DAYS_IN_WEEK = 7;
 class Week {
   constructor(weeksToAdvance = 0) {
     this.date = new Date();
+    this.weekNumber = this.getWeekNumber();
     this.weeksToAdvance = weeksToAdvance;
     this.startOn = this.getAdvancedWeekStart();
     this.endOn = this.getAdvancedWeekEnd();
     this.days = this.addDaysToWeek();
+  }
+
+  getWeekNumber() {
+    return format(this.date, 'w');
   }
 
   getAdvancedWeekStart() {
@@ -37,13 +50,27 @@ class Week {
   }
 
   addDaysToWeek() {
-    const days = [];
-    for (let i = 0; i < DAYS_IN_WEEK; i++) {
+    const days = new Map();
+
+    DAYS_IN_WEEK.forEach((dayName, i) => {
       const dayDate = addDays(this.startOn, i);
       const dateString = format(dayDate, 'dd/MM/yy');
-      days.push(new Day(dateString));
-    }
+      const day = new Day(dateString);
+
+      days.set(dayName, day);
+    });
+
     return days;
+  }
+
+  updateShift(dayIndex, teamMember, newShift) {
+    const day = this.days[dayIndex];
+
+    if (day) {
+      day.updateShift(teamMember, newShift);
+    } else {
+      console.error(`Day at index ${dayIndex} not found`);
+    }
   }
 
   calculateHoursOfWeek() {

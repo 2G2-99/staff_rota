@@ -7,7 +7,11 @@ function HoursRow({ currentWeek }) {
     <>
       <tr className={table.row}>
         <th className={table.daily}>daily hours</th>
-        {currentWeek.days.map(renderDailyHours)}
+        {Array.from(currentWeek.days.values()).map(day => (
+          <td key={day.dayName} className={table.data}>
+            <p>{day.hours}</p>
+          </td>
+        ))}
       </tr>
 
       <tr className={table.row}>
@@ -17,15 +21,6 @@ function HoursRow({ currentWeek }) {
         </td>
       </tr>
     </>
-  );
-}
-
-function renderDailyHours(day) {
-  const key = `${day.formattedDate} - ${day.hours}`;
-  return (
-    <td key={key} className={table.data}>
-      <p>{day.hours}</p>
-    </td>
   );
 }
 

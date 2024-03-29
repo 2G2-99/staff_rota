@@ -17,9 +17,13 @@ function TeamMemberCell({ teamMember }) {
 }
 
 function ShiftCell({ teamMember, currentWeek }) {
-  return currentWeek.days.map(day => (
-    <DayData key={day.dayName} teamMember={teamMember} day={day} />
-  ));
+  return (
+    <>
+      {Array.from(currentWeek.days.values()).map(day => (
+        <DayData key={day.dayName} teamMember={teamMember} day={day} />
+      ))}
+    </>
+  );
 }
 
 function DayData({ teamMember, day }) {
@@ -37,7 +41,7 @@ function ShiftData({ day, teamMember }) {
   const formattedShift =
     day.shifts.get(teamMember)?.formatShift() ?? 'No Shift';
 
-  // TODO: Re-render the component with the new shift data after the form is submitted
+  // TODO: Re-render the the component with the new shift data after the form is submitted
   useEffect(() => {}, [modalData]);
 
   return <p className={table.data}>{formattedShift}</p>;
