@@ -1,9 +1,17 @@
+/* *THIS TEMPLATE HAS BEEN CREATED WITH THE INTENTION TO AVOID ABUSING OF 'div' AND CONTAINERS. ALSO, IT ENSURES THE PAGE IS RESPONSIVE BY ASSIGNING AREAS TO WHICH THE CONTENT MIGHT BE POSITIONED OR EXPANDED DEPENDING OF THE SCREEN SIZE */
+
 .content-grid {
-  --gap: clamp(1rem, 6vw, 3rem);
+  /* INLINE PADDING AND MAXIMUM SIZE OF EACH AREA*/
+  /* -- IF NEEDED, CHANGE THE VALUES FROM HERE -- */
+  --padding-inline: clamp(1rem, 6vw, 3rem);
   --content-max-width: 64ch;
   --breakout-max-width: 80ch;
   --feature-max-width: 96ch;
+  /* -- IF NEEDED, CHANGE THE VALUES UNTIL HERE -- */
 
+  /* !DO NOT CHANGE ANYTHING FROM HERE */
+
+  /* SIZE OF BREAKOUT AND FEATURE AREAS */
   --breakout-size: calc(
     ((var(--breakout-max-width) - var(--content-max-width)) / 2)
   );
@@ -11,14 +19,14 @@
     ((var(--feature-max-width) - var(--content-max-width)) / 2)
   );
 
-  /* Column Areas */
-  --full-width: minmax(var(--gap), 1fr);
-  --content: min(100% - (var(--gap) * 2), var(--content-max-width));
+  /* COLUMNS INLINE SIZE	 */
+  --full-width: minmax(var(--padding-inline), 1fr);
+  --content: min(100% - (var(--padding-inline) * 2), var(--content-max-width));
   --breakout: minmax(0, var(--breakout-size));
   --feature: minmax(0, var(--feature-size));
 
+  /* GRID'S NAMED LINES */
   display: grid;
-
   grid-template-columns:
     [full-width-start] var(--full-width)
     [feature-start] var(--feature)
@@ -29,8 +37,8 @@
     var(--full-width) [full-width-end];
 }
 
-.content-grid > :not(.breakout, .feature, .full-width),
-.full-width > :not(.breakout, .feature, .full-width) {
+.content-grid > :not(.breakout, full-width),
+.full-width > :not(.breakout, full-width) {
   grid-column: content;
 }
 
@@ -48,6 +56,8 @@
   display: grid;
   grid-template-columns: inherit;
 }
+
+/* !DO NOT CHANGE ANYTHING UNTIL HERE */
 
 .App_divider {
   content: '';

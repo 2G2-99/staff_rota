@@ -2,24 +2,25 @@ import {
   currentShift,
   formattedDate,
   formattedQuarter,
-  formattedTime,
   formattedWeek,
 } from '../../logic/time';
 import '../../styles/Hero.css';
 import Button from '../Button';
 import ScrollDownIcon from '../Icons/ScrollDownIcon';
 import button from '../../styles/Button.module.css';
+import Clock from '../Clock';
 
 function Hero() {
   return (
-    <div id='hero' className='full-width'>
+    <div
+      id='hero'
+      className='full-width'
+    >
       <div className='hero-wrapper'>
         <div className='hero date'>
           <p className='current'>{formattedDate}</p>
         </div>
-        <div className='time'>
-          <p className='current'>{formattedTime}</p>
-        </div>
+        <Clock />
         <div className='hero date'>
           <p className='format'>
             Quarter <span className='quarter'>{formattedQuarter}</span> - Week{' '}
