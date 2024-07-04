@@ -1,45 +1,64 @@
-import { memo, useContext, useEffect, useRef } from 'react';
-import { ModalContext } from '../../context/ModalContext';
 import Button from '../Button';
 import Modal from './Modal';
 import button from '../../styles/Button.module.css';
 import modal from '../../styles/Modal.module.css';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { ShiftModalContext } from '../../context/ShiftModalContext';
 
-const EditShiftModal = memo(function EditShiftModal() {
-  const { isModalOpen, closeModal, currentShiftTimes, setCurrentShiftTimes } =
-    useContext(ModalContext);
+const initialShiftTimes = {
+  startTime: '00:00', // Default start time
+  endTime: '00:00', // Default end time
+};
 
+function EditShiftModal() {
+  const { isModalOpen, handleCloseModal, modalData, updateShift } =
+    useContext(ShiftModalContext);
+  const [shiftTimes, setShiftTimes] = useState(initialShiftTimes);
+
+  // Reference to the inputs in the DOM
   const startTimeInputRef = useRef(null);
+  const endTimeInputRef = useRef(null);
 
+  // Focus on start time input
   useEffect(() => {
-    //Focus on start time input
-    if (isModalOpen && startTimeInputRef.current) {
-      startTimeInputRef.current.focus();
+    if (isModalOpen) {
+      setTimeout(() => {
+        startTimeInputRef.current.focus();
+
+        startTimeInputRef.current.value = modalData.shift.startTime;
+        endTimeInputRef.current.value = modalData.shift.endTime;
+      }, 0);
     }
-  }, [isModalOpen]);
+  }, [isModalOpen, modalData]);
 
-  const handleStartTimeChange = ({ target: { value } }) => {
-    setCurrentShiftTimes({
-      ...currentShiftTimes,
-      startTime: value,
-    });
-  };
+  // Sync shiftTimes with modalData when modalData changes
+  useEffect(() => {
+    if (modalData.shift) {
+      setShiftTimes({
+        startTime: modalData.shift.startTime,
+        endTime: modalData.shift.endTime,
+      });
+    }
+  }, [modalData]);
 
-  const handleEndTimeChange = ({ target: { value } }) => {
-    setCurrentShiftTimes({
-      ...currentShiftTimes,
-      endTime: value,
-    });
+  const handleTimeChange = (event, timeType) => {
+    const { value } = event.target;
+
+    setShiftTimes(previousShiftTimes => ({
+      ...previousShiftTimes,
+      [timeType]: value,
+    }));
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-
-    closeModal();
+    updateShift(shiftTimes);
+    setShiftTimes(initialShiftTimes);
+    handleCloseModal();
   };
 
   return (
-    <Modal isOpen={isModalOpen} hasCloseBtn onClose>
+    <Modal isOpen={isModalOpen} hasCloseBtn={true} onClose>
       <form onSubmit={handleSubmit}>
         <section id='modal-title' className={modal.header}>
           <h2>Edit Shift</h2>
@@ -47,17 +66,19 @@ const EditShiftModal = memo(function EditShiftModal() {
         <section className={modal.body} aria-labelledby='modal-title'>
           <fieldset className={`${modal.shift} ${modal.edit}`}>
             <TimeInput
+              refElement={startTimeInputRef}
               label='Select a start time:'
-              value={currentShiftTimes.startTime}
-              onChange={handleStartTimeChange}
+              value={shiftTimes.startTime}
+              onChange={event => handleTimeChange(event, 'startTime')}
               required
               id='start'
               name='start'
             />
             <TimeInput
+              refElement={endTimeInputRef}
               label='Select an end time:'
-              value={currentShiftTimes.endTime}
-              onChange={handleEndTimeChange}
+              value={shiftTimes.endTime}
+              onChange={event => handleTimeChange(event, 'endTime')}
               required
               id='end'
               name='end'
@@ -73,7 +94,10 @@ const EditShiftModal = memo(function EditShiftModal() {
             >
               Accept
             </Button>
-            <Button className={`${button.cancel} ${button.action}`}>
+            <Button
+              className={`${button.cancel} ${button.action}`}
+              onClick={handleCloseModal}
+            >
               Cancel
             </Button>
           </div>
@@ -81,13 +105,14 @@ const EditShiftModal = memo(function EditShiftModal() {
       </form>
     </Modal>
   );
-});
+}
 
-function TimeInput({ label, value, onChange, required, id, name }) {
+function TimeInput({ label, value, onChange, required, id, name, refElement }) {
   return (
     <label className={modal.label}>
       {label}
       <input
+        ref={refElement}
         className={modal.input}
         type='time'
         id={id}

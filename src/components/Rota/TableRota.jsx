@@ -1,11 +1,16 @@
-import team from '../../data/team';
 import DateCell from './DateCell';
 import TeamRows from './TeamRows';
 import '../../styles/Rota.css';
 import table from '../../styles/Table.module.css';
 import HoursRow from './HoursRow';
 
-function TableRota({ selectedWeek }) {
+/**
+ *
+ * @param {object} team Selected team from the data base to access and display its data.
+ * @param {object} selectedWeek Selected Week instance to access and display its data.
+ * @returns {React.JSX.Element} A component created with various sub-components to be able to present as a table in the UI.
+ */
+function TableRota({ team, selectedWeek }) {
   return (
     <div className='table-container feature'>
       <table className={table.layout}>

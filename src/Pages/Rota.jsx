@@ -1,13 +1,10 @@
 import Week from '../classes/weekly/week';
-import EditShiftModal from '../components/Modal/EditShiftModal';
 import TableRota from '../components/Rota/TableRota';
 import '../styles/Rota.css';
 import team from '../data/team';
-import { ModalProvider } from '../context/ModalContext';
-import { ShiftsProvider } from '../context/shiftsContext';
 import { useEffect, useState } from 'react';
-
-// const CurrentWeek = new Week();
+import EditShiftModal from '../components/Modal/EditShiftModal';
+import { ShiftModalProvider } from '../context/ShiftModalContext';
 
 /**
  *
@@ -43,18 +40,13 @@ function Rota() {
   }
 
   return (
-    <ShiftsProvider>
-      <ModalProvider>
-        <TableRota selectedWeek={currentWeek} />
-        <EditShiftModal />
-      </ModalProvider>
-    </ShiftsProvider>
+    <ShiftModalProvider>
+      <TableRota selectedWeek={currentWeek} team={team} />
+      <EditShiftModal />
+    </ShiftModalProvider>
   );
 }
 
 export default Rota;
 
 // TODO: Find a way to update total hours every time a shift is added, edited or deleted
-
-// console.log(CurrentWeek.days);
-// console.log(CurrentWeek.days[0].shifts);

@@ -4,32 +4,28 @@ import Button from '../Button';
 import CrossIcon from '../Icons/CrossIcon';
 import modal from '../../styles/Modal.module.css';
 import button from '../../styles/Button.module.css';
-import { ModalContext } from '../../context/ModalContext';
+import { ShiftModalContext } from '../../context/ShiftModalContext';
 
-function Modal({ isOpen, hasCloseBtn, onClose, children }) {
+function Modal({ hasCloseBtn = false, children }) {
+  const { isModalOpen, handleCloseModal } = useContext(ShiftModalContext);
   const modalRef = useRef(null);
-  const { closeModal } = useContext(ModalContext);
 
-  const handleCloseModal = () => {
-    if (onClose) closeModal();
-  };
+  useEffect(() => {
+    const modalElement = modalRef.current;
+    if (modalElement) {
+      if (isModalOpen) {
+        modalElement.showModal();
+      } else {
+        modalElement.close();
+      }
+    }
+  }, [isModalOpen, modalRef]);
 
   const handleESCKey = e => {
     if (e.key === 'Escape') {
       handleCloseModal();
     }
   };
-
-  useEffect(() => {
-    const modalElement = modalRef.current;
-    if (modalElement) {
-      if (isOpen) {
-        modalElement.showModal();
-      } else {
-        modalElement.close();
-      }
-    }
-  }, [isOpen, modalRef]);
 
   return (
     <dialog ref={modalRef} className={modal.layout} onKeyDown={handleESCKey}>
@@ -38,7 +34,6 @@ function Modal({ isOpen, hasCloseBtn, onClose, children }) {
           className={`${button.close} ${button.action}`}
           onClick={handleCloseModal}
         >
-          {/* isOpen => cross if !isOpen => burger */}
           <CrossIcon width={'2em'} height={'2em'} />
         </Button>
       )}
